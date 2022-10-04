@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="odoo_custom_portal.Downloads" owl="1">
+
+
+                <section class="home-section" style="font-family:'Montserrat'">
+                <nav>
+                    <div class="sidebar-button">
+                        <i class='fa fa-bars icon' t-on-click="props.onClickMenu"></i>
+                        <span class="dashboard">Downloads</span>
+                    </div>
+                    <div class="profile-details">
+                        <!--<img src="images/profile.jpg" alt="">-->
+                        <span class="admin_name"></span>
+                        <i class='bx bx-chevron-down'></i>
+                    </div>
+                </nav>
+
+                    <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;height:100vh;width:100%">
+                        <div class="lds-dual-ring"></div>
+                    </div>
+
+                    <div class="home-content">
+
+                        <div t-attf-style="display:{{loading.is_loading ? 'none':'block'}}">
+                            <div class="downloads-tab-container">
+                                <div class="download-tab">
+                                    <h1 class="download-tab-name">Pay Slips</h1>
+                                </div>
+                                <div class="download-tab">
+                                    <h1 class="download-tab-name">Pay Slips</h1>
+                                </div>
+                                <div class="download-tab">
+                                    <h1 class="download-tab-name">Pay Slips</h1>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="downloads-tables-container">
+                                <div class="title">Pay Slips</div>
+                                <div class="downloads-tables">
+                                    <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                          <th>Reference</th>
+                                            <th>Structure</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Basic Wage</th>
+                                            <th>Net Wage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                          <td>1</td>
+                                            <td>Domenic</td>
+                                            <td>88,110</td>
+                                            <td>dcode</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Sally</td>
+                                            <td>72,400</td>
+                                            <td>Students</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Nick</td>
+                                            <td>52,300</td>
+                                            <td>dcode</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                    <div style="padding: 10px; display:flex;justify-content:end;width:100%;">
+                                        <div class="pagination-tabs">
+                                            <div class="pagination-button">
+                                                <span>1</span>
+                                            </div>
+                                            <div class="pagination-button">
+                                                <span>1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+            </section>
+
+        </t>
+
+        </templates>
+
+
+

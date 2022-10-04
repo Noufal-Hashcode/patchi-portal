@@ -1,0 +1,95 @@
+.home-content {
+  .downloads-tab-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 20px;
+    gap: 16px;
+
+    .download-tab {
+      padding: 10px 10px;
+      border-radius: 8px;
+      background-color: #aa9828;
+      align-items: center;
+
+
+      .download-tab-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .downloads-tables-container {
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 42px;
+
+    .title {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: #495057;
+      font-weight: 500;
+    }
+
+
+    .downloads-tables {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow-x: auto;
+      box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15) !important;
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0px;
+        font-size: 0.9em;
+        min-width: 400px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+
+        thead tr {
+          background-color: #ffffff;
+          color: #535353;
+          text-align: left;
+          font-weight: bold;
+          border-bottom: 1px solid #dddddd;
+        }
+
+        th, td {
+          padding: 12px 15px;
+        }
+
+        tbody tr {
+          border-bottom: 1px solid #dddddd;
+        }
+
+        tr:nth-of-type(even) {
+          background-color: #f3f3f3;
+        }
+
+        tbody tr:last-of-type {
+          //border-bottom: 1px solid #aa9828;
+        }
+
+      }
+
+      .pagination-tabs {
+        display: flex;
+
+        .pagination-button {
+          display: flex;
+          height: 2.5rem;
+          width: 2.5rem;
+          border-radius: 3px;
+          border: 1px solid #3F3F3F;
+          margin: 0px 4px;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+    }
+
+  }
+
+}

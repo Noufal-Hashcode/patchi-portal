@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="odoo_custom_portal.MainPortal" owl="1">
+        <div style="height:100%;">
+            <div class="home-wrapper">
+            <div t-attf-class="sidebar {{main_menu.active ? 'active' : '' }}" style="font-family:'Montserrat'">
+                <div class="logo-details">
+<!--                        <div class="user-icon"></div>-->
+                        <img class="user-icon" src="/odoo_custom_portal/static/src/img/logo-large.jpg" alt=""/>
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItem('main_dashboard')" t-attf-style ="{{ main_menu.is_main_dashboard_visible ? 'border-left: 5px solid #f8ce46;background-color: #2b2a26;' :''}};" >
+                            <i class="fa fa-home icon"/>
+                            <span class="links_name">Dashboard</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItem('my_profile')" t-attf-style ="{{ main_menu.is_my_profile_visible ? 'border-left: 5px solid #f8ce46;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-user icon"/>
+                            <span class="links_name">My Profile</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div  class="nav-link-div" t-on-click="()=>onClickMainMenuItem('my_shifts') " t-attf-style ="{{ main_menu.is_my_shifts_visible ? 'border-left: 5px solid #f8ce46;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-clock-o icon"/>
+                            <span class="links_name">My Shifts</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItem('alerts') " t-attf-style ="{{ main_menu.is_alerts_visible ? 'border-left: 5px solid #f8ce46;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-bell icon"/>
+                            <span class="links_name">Alerts</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItem('downloads') " t-attf-style ="{{ main_menu.is_downloads_visible ? 'border-left: 5px solid #f8ce46;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-download icon"/>
+                            <span class="links_name">Downloads</span>
+                        </div>
+                    </li>
+                    <li >
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItem('newsletter') " t-attf-style ="{{ main_menu.is_newsletter_visible ? 'border-left: 5px solid #f8ce46;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-newspaper-o icon"/>
+                            <span class="links_name">Newsletter</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <t t-if="main_menu.is_main_dashboard_visible">
+                <DashBoard onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+            </t>
+            <t t-elif="main_menu.is_my_profile_visible">
+                <MyProfile onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+            </t>
+            <t t-elif="main_menu.is_my_shifts_visible">
+                <MyShifts onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+            </t>
+            <t t-elif="main_menu.is_alerts_visible">
+                <Alerts onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+            </t>
+            <t t-elif="main_menu.is_downloads_visible">
+                <Downloads onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+            </t>
+            <t t-elif="main_menu.is_newsletter_visible">
+                <Newsletter onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+            </t>
+
+
+
+        </div>
+        </div>
+
+     </t>
+
+ </templates>
+
+
+

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="odoo_custom_portal.DashBoard" owl="1">
+
+
+                <section class="home-section" style="font-family:'Montserrat';">
+                <nav>
+                    <div class="sidebar-button">
+                        <i class='fa fa-bars icon' t-on-click="props.onClickMenu"></i>
+                        <span class="dashboard">Dashboard</span>
+                    </div>
+                    <div class="profile-details">
+                        <!--<img src="images/profile.jpg" alt="">-->
+                        <span class="admin_name"></span>
+                        <i class='bx bx-chevron-down'></i>
+                    </div>
+                </nav>
+                    <div
+                         t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;height:100vh;width:100%">
+                        <div class="lds-dual-ring"></div>
+                    </div>
+
+                    <div t-attf-style="display:{{loading.is_loading ? 'none':'block'}}" class="home-content">
+
+                        <div class="user-details-box" style="">
+                            <div class="employee-icon-section">
+                                <div class="icon-container">
+                                    <img t-if="state.employee_data.id" style="width:100px;,height:100px"
+                                         class="img rounded-circle"
+                                         t-attf-src="/web/image?model=hr.employee.public&amp;field=avatar_128&amp;id={{state.employee_data.id}}"/>
+                                </div>
+                                <div class="employee-name-box" style="width:100%">
+                                    <div>
+                                        <h2 style="font-weight: 600;font-size:1.3rem;"><t t-esc="state.employee_data.name"/></h2>
+                                    </div>
+                                    <div>
+                                        <h4 style="font-weight: 500;font-size:1rem;"><t t-esc="state.employee_data.job_title"/></h4>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="employee-details">
+                                    <table class="employee-details-table">
+                                        <tr>
+                                            <td>Mobile <span class="employee-data"><t t-if="state.employee_data.mobile_phone" t-esc="state.employee_data.mobile_phone"/>
+                                                <t t-else=""> -</t></span></td>
+                                            <td>Phone <span class="employee-data"><t t-if="state.employee_data.work_phone" t-esc="state.employee_data.work_phone"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone <span class="employee-data"><t t-if="state.employee_data.work_phone" t-esc="state.employee_data.work_phone"/>
+                                                <t t-else=""> -</t></span></td>
+                                            <td>Working Hours <span class="employee-data"><t t-if="state.employee_data.resource_calendar_id" t-esc="state.employee_data.resource_calendar_id"/>
+                                                <t t-else=""> -</t></span></td>
+
+                                        </tr>
+                                        <tr>
+                                           <td>Email <span class="employee-data"><t t-if="state.employee_data.work_email" t-esc="state.employee_data.work_email"/></span></td>
+                                            <td>Time Zone <span class="employee-data"><t t-if="state.employee_data.tz" t-esc="state.employee_data.tz"/></span></td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="employee-details-table-small">
+                                        <tr>
+                                            <td>Mobile <span class="employee-data"><t t-if="state.employee_data.mobile_phone" t-esc="state.employee_data.mobile_phone"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone <span class="employee-data"><t t-if="state.employee_data.work_phone" t-esc="state.employee_data.work_phone"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email <span class="employee-data"><t t-if="state.employee_data.work_email" t-esc="state.employee_data.work_email"/></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone <span class="employee-data"><t t-if="state.employee_data.work_phone" t-esc="state.employee_data.work_phone"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Working Hours <span class="employee-data"><t t-if="state.employee_data.resource_calendar_id" t-esc="state.employee_data.resource_calendar_id"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Time Zone <span class="employee-data"><t t-if="state.employee_data.tz" t-esc="state.employee_data.tz"/></span></td>
+                                        </tr>
+                                        <tr class="department-small">
+                                            <td>Department <span class="employee-data"><t t-if="state.employee_data.department_id" t-esc="state.employee_data.department_id[1]"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+                                        <tr class="department-small">
+                                            <td>Location <span class="employee-data"><t t-if="state.employee_data.work_location_id" t-esc="state.employee_data.work_location_id[1]"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+
+                                    </table>
+                                    <div class="employee-details-department">
+                                        <div>
+                                            <h3>Department</h3>
+                                            <p><t t-if="state.employee_data.department_id" t-esc="state.employee_data.department_id[1]"/>
+                                                <t t-else=""> -</t></p>
+                                        </div>
+                                        <div>
+                                            <h3>Location</h3>
+                                            <p><t t-if="state.employee_data.work_location_id" t-esc="state.employee_data.work_location_id[1]"/>
+                                                <t t-else=""> -</t></p>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                        <div style="margin-top:42px;">
+                            <div><h1 style="font-size:1.8rem;padding:0px 20px;margin-bottom:12px;color:#495057;font-weight: 500;">Short Cuts</h1></div>
+                            <div class="overview-boxes">
+                            <div class="box" t-on-click="()=>props.onClickShortCuts('my_profile')">
+                                <div class="right-side">
+                                    <div class="indicator">
+                                        <i class="fa fa-user icon"/>
+                                    </div>
+                                    <div class="box-topic">
+                                        <h1>My Profile</h1>
+                                    </div>
+                                </div>
+
+                            </div>
+                                <div class="box" t-on-click="()=>props.onClickShortCuts('my_shifts')">
+                                <div class="right-side">
+                                    <div class="indicator">
+                                        <i class="fa fa-clock-o icon"/>
+                                    </div>
+                                    <div class="box-topic">
+                                        <h1>My shifts</h1>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="box" t-on-click="()=>props.onClickShortCuts('alerts')">
+                                <div class="right-side">
+                                    <div class="indicator">
+                                        <i class="fa fa-bell icon"/>
+                                    </div>
+                                    <div class="box-topic">
+                                        <h1>Alerts</h1>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="box" t-on-click="()=>props.onClickShortCuts('newsletter')">
+                                <div class="right-side">
+                                    <div class="indicator">
+                                        <i class="fa fa-newspaper-o icon"/>
+                                    </div>
+                                    <div class="box-topic">
+                                        <h1>News Letter</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="sales-boxes">
+                            <div class="leave-balances box" style="width:100%;">
+                                <div class="title">My Shifts</div>
+                                <div t-ref="shift_chart" >
+<!--                                    <div class="leave-balance-data" ></div>-->
+<!--                                    <svg id="gantt"></svg>-->
+                                    <svg class="gantt-selector"></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sales-boxes">
+                            <div class="leave-balances box">
+                                <div class="title">Leave Balances</div>
+                                <div class="leave-balance-data" style="display: flex;flex-flow: row wrap;height: 100%;align-content: flex-start;">
+                                        <div t-foreach="state.leave_balances_data" t-as="leave"
+                                                t-key="leave[3]" class="leave-balances-tab">
+                                            <div style="display:flex; justify-content:space-between;">
+                                                <span style="color: black;font-weight: 600;font-size: 1.2rem;" t-esc="leave[0]"/>
+                                                <div style="width:28px;height:28px">
+                                                    <img t-if="leave[1].icon" style="width:28px;height:28px"  t-attf-src="{{leave[1].icon}}"/>
+                                                </div>
+                                            </div>
+                                            <div style="display:flex;justify-content:space-between;">
+                                                <div style="display:flex;">
+                                                    <span style="font-size: 2.1rem;font-weight: 700;" t-esc="leave[1].remaining_leaves"/>
+                                                    <div style="margin-left:4px;">
+                                                        <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;" t-esc="leave[1].request_unit"/>
+                                                        <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;" > Available</p>
+                                                    </div>
+                                                </div>
+                                                <div style="display:flex;align-items:flex-end;">
+                                                    <p style="margin:0;font-weight: 600;"> <t t-esc="leave[1].leaves_taken"/> / <t  t-esc="leave[1].max_leaves"/> <t t-esc="leave[1].request_unit"/>s</p>
+<!--                                                    <p t-esc="leave[1].request_unit"/>-->
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    <div style="flex: 1 1 auto;width: 250px;"/>
+                                    <div style="flex: 1 1 auto;width: 250px;"/>
+                                    <div style="flex: 1 1 auto;width: 250px;"/>
+                                    <div style="flex: 1 1 auto;width: 250px;"/>
+                                </div>
+                            </div>
+                            <div class="leave-requests box">
+                                <div class="title">Leave Requests</div>
+                                <div class="leave-request-data">
+                                    <table class="leave-request-table" style="width:100%">
+                                        <thead>
+                                            <tr class="table100-head">
+                                                <th>Type</th>
+                                                <th>Start</th>
+                                                <th>End</th>
+                                                <th>Duration</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="state.leave_requests_data" t-as="leave_request"
+                                                t-key="leave_request.id">
+                                                <td><t t-esc="leave_request.holiday_status_id[1]"/></td>
+                                                <td><t t-esc="leave_request.date_from"/></td>
+                                                <td><t t-esc="leave_request.date_to"/></td>
+                                                <td><t t-esc="leave_request.duration_display"/></td>
+                                                <td><t t-esc="leave_request.state"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sales-boxes">
+                            <div class="leave-balances box">
+                                <div class="title">Attendance</div>
+                                <div class="leave-balance-data">
+                                    <table class="attendance-data-table" style="width:100%">
+                                        <thead>
+                                            <tr class="table100-head">
+                                                <th class="column1">Check In</th>
+                                                <th class="column2">Check Out</th>
+                                                <th class="column3">Worked Hours</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="state.attendances_data" t-as="attendance"
+                                                t-key="attendance.id">
+                                                <td><t t-esc="attendance.check_in"/></td>
+                                                <td><t t-esc="attendance.check_out"/></td>
+                                                <td><t t-esc="attendance.worked_hours"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="leave-requests box">
+                                <div class="title">Alerts</div>
+                                <div class="leave-request-data">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding-top:30px;"></div>
+                </div>
+
+            </section>
+
+        </t>
+
+        </templates>
+
+
+

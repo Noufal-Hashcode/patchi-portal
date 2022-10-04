@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="odoo_custom_portal.Newsletter" owl="1">
+
+
+                <section class="home-section" style="font-family:'Montserrat'">
+                <nav>
+                    <div class="sidebar-button">
+                        <i class='fa fa-bars icon' t-on-click="props.onClickMenu"></i>
+                        <span class="dashboard">Newsletter</span>
+                    </div>
+                    <div class="profile-details">
+                        <!--<img src="images/profile.jpg" alt="">-->
+                        <span class="admin_name"></span>
+                        <i class='bx bx-chevron-down'></i>
+                    </div>
+                </nav>
+                    <div
+                         t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;height:100vh;width:100%">
+                        <div class="lds-dual-ring"></div>
+                    </div>
+                    <div t-attf-style="display:{{loading.is_loading ? 'none':'block'}}" class="home-content">
+                        <div style="display: flex;flex-flow: row wrap;height: 100%;align-content: flex-start;" class="leave-balance-data">
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Paid Time Off</span>
+                                    <div style="width:28px;height:28px">
+                                        <img style="width:28px;height:28px" src="/hr_holidays/static/src/img/icons/Paid_Time_Off.svg"/>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">36</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-end;">
+                                        <p style="margin:0;font-weight: 600;"> 4 / 40 days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="news-letter-tab">
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;">Sick Off</span>
+                                    <div style="width:28px;height:28px"></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div style="display:flex;">
+                                        <span style="font-size: 2.1rem;font-weight: 700;">20</span>
+                                        <div style="margin-left:4px;">
+                                            <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">day</p>
+                                            <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;"> Available</p>
+                                        </div></div><div style="display:flex;align-items:flex-end;">
+                                    <p style="margin:0;font-weight: 600;"> 0 / 20 days</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div style="flex: 1 1 auto;width: 250px; padding: 0.6rem 1.5rem;margin: 0.3rem;"></div>
+                            <div style="flex: 1 1 auto;width: 250px; padding: 0.6rem 1.5rem;margin: 0.3rem;"></div>
+                            <div style="flex: 1 1 auto;width: 250px; padding: 0.6rem 1.5rem;margin: 0.3rem;"></div>
+                            <div style="flex: 1 1 auto;width: 250px; padding: 0.6rem 1.5rem;margin: 0.3rem;"></div>
+                        </div>
+                    </div>
+            </section>
+
+        </t>
+
+        </templates>
+
+
+
