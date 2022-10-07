@@ -25,160 +25,293 @@
 
                     <div t-else="" class="home-content">
                         <div class="main-content">
+                            <div class="main-content-wrapper">
+                                <div class="profile-container">
+                                    <t t-if="state.current_page == 1">
+                                        <header>
+                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                <div>Personal</div>
+                                                <div style="display:flex;" t-if="state.edit_enable">
+                                                    <div style="margin-right:8px;" class="edit-button" t-on-click="discardChanges">
+                                                        <h2 style="margin:0;font-size:1.1rem;">Discard</h2>
+                                                    </div>
+                                                    <div class="edit-button" t-on-click="saveChanges">
+                                                        <h2 style="margin:0;font-size:1.1rem;">Save</h2>
+                                                    </div>
+                                                </div>
+                                                <t  t-else="">
+                                                    <div class="edit-button" t-on-click="editButton">
+                                                        <h2 style="margin:0;font-size:1.1rem;">Edit</h2>
+                                                    </div>
 
-    <!-- Page content -->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-<!--                    <img src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg" class="rounded-circle"/>-->
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-              <div class="d-flex justify-content-between">
-                <a href="#" class="btn btn-sm btn-info mr-4">Connect</a>
-                <a href="#" class="btn btn-sm btn-default float-right">Message</a>
-              </div>
-            </div>
-            <div class="card-body pt-0 pt-md-4">
-              <div class="row">
-                <div class="col">
-                  <div class="card-profile-stats d-flex justify-content-center mt-md-5">
-                    <div>
-                      <span class="heading">22</span>
-                      <span class="description">Friends</span>
-                    </div>
-                    <div>
-                      <span class="heading">10</span>
-                      <span class="description">Photos</span>
-                    </div>
-                    <div>
-                      <span class="heading">89</span>
-                      <span class="description">Comments</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="text-center">
-                <h3>
-                  Jessica Jones<span class="font-weight-light">, 27</span>
-                </h3>
-                <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i>Bucharest, Romania
-                </div>
-                <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
-                </div>
-                <div>
-                  <i class="ni education_hat mr-2"></i>University of Computer Science
-                </div>
-                <hr class="my-4"/>
-                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
-                <a href="#">Show more</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-8 order-xl-1">
-          <div class="card bg-secondary shadow">
-            <div class="card-header bg-white border-0">
-              <div class="row align-items-center">
-                <div class="col-8">
-                  <h3 class="mb-0">My account</h3>
-                </div>
-                <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <form>
-                <h6 class="heading-small text-muted mb-4">User information</h6>
-                <div class="pl-lg-4">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse"/>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com"/>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-first-name">First name</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky"/>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-last-name">Last name</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr class="my-4"/>
-                <!-- Address -->
-                <h6 class="heading-small text-muted mb-4">Contact information</h6>
-                <div class="pl-lg-4">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-address">Address</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text"/>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-city">City</label>
-                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York"/>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-country">Country</label>
-                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States"/>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country">Postal code</label>
-                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr class="my-4"/>
-                <!-- Description -->
-                <h6 class="heading-small text-muted mb-4">About me</h6>
-                <div class="pl-lg-4">
-                  <div class="form-group focused">
-                    <label>About Me</label>
-                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                                                </t>
+
+                                            </div>
+                                        </header>
+                                        <div class="form-view">
+                                        <div class="form first" t-if="Object.keys(state.employee_data).length >0">
+                                            <div class="details personal">
+<!--                <span class="title">Personal Details</span>-->
+
+                                                <div class="fields">
+                                        <div class="input-field">
+                                            <label>Email</label>
+                                            <input type="text"  t-attf-placeholder="{{state.edit_enable ? 'Private Email' : '  -  '}}" t-attf-value="{{state.employee_data.private_email}}"  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'private_email')"/>
+                                        </div>
+
+                                                    <div class="input-field">
+                                            <label>Mobile Number</label>
+                                                        <input type="text"  t-attf-placeholder="{{state.edit_enable ? 'Private Mobile Number' : '  -  '}}"  t-attf-value="{{state.employee_data.phone}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'phone')"/>
+                                        </div>
+
+                                                    <div class="input-field">
+                                            <label>Date of Birth</label>
+                                                        <input type="date"  t-attf-placeholder="{{state.edit_enable ? 'Birth Date' : '  -  '}}"  t-attf-value="{{state.employee_data.birthday}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'birthday')"/>
+                                        </div>
+                                                    <div class="input-field">
+                                            <label>Gender</label>
+                                                        <input type="text" placeholder="  -  " t-attf-value="{{state.employee_data.gender}}" disabled="disabled" />
+
+                                        </div>
+
+                                                    <div class="input-field">
+                                                        <label>Marital Status</label>
+                                                        <select  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-change="">
+                                                            <option t-att-selected="state.employee_data.marital ? '' : 'selected'" ><t t-if="state.edit_enable">Marital Status</t><t t-else="">  -  </t></option>
+                                                            <t t-if="Object.keys(state.employee_data).length >0">
+                                                                <option t-att-selected="state.employee_data.marital[0] == status ? 'selected' : '' " t-foreach="Object.keys(state.employee_data.marital_statuses)" t-as="status" t-key="status" t-att-value="status" >
+                                                                    <t t-esc="state.employee_data.marital_statuses[status]"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field">
+                                            <label>Number of Children</label>
+                                                        <input type="number" min="0" max="20"  t-attf-placeholder="{{state.edit_enable ? 'Children' : '  -  '}}"  t-attf-value="{{state.employee_data.children}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'children')" />
+                                        </div>
+
+
+                                                    <div class="input-field">
+                                            <label>Emergency Contact</label>
+                                                        <input type="text"  t-attf-placeholder="{{state.edit_enable ? 'Emergency Contact' : '  -  '}}" t-attf-value="{{state.employee_data.emergency_contact}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'emergency_contact')"/>
+                                        </div>
+                                                    <div class="input-field">
+                                            <label>Emergency Phone</label>
+                                                        <input type="text"  t-attf-placeholder="{{state.edit_enable ? 'Emergency Phone' : '  -  '}}" t-attf-value="{{state.employee_data.emergency_phone}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'emergency_phone')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                            <div class="details ID">
+                                                <span class="title">Address</span>
+                                                <div class="fields">
+                                                    <div class="input-field">
+                                                        <label>Street</label>
+                                                        <input type="text" t-attf-placeholder="{{state.edit_enable ? 'Street' : '  -  '}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-attf-value="{{state.employee_data.address_home_id.street}}" t-on-input="(e)=> onChangeField(e,'street')"/>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label>Street 2</label>
+                                                        <input type="text" t-attf-placeholder="{{state.edit_enable ? 'Street 2' : '  -  '}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-attf-value="{{state.employee_data.address_home_id.street2}}" t-on-input="(e)=> onChangeField(e,'street2')"/>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label>City</label>
+                                                        <input type="text" t-attf-placeholder="{{state.edit_enable ? 'City' : '  -  '}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-attf-value="{{state.employee_data.address_home_id.city}}" t-on-input="(e)=> onChangeField(e,'city')"/>
+                                                    </div>
+                                                    <div class="input-field">
+                                                        <label>State</label>
+                                                        <select  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-change="(value) => changeState(value)">
+                                                            <option t-att-selected="state.employee_data.address_home_id.state_id ? '' : 'selected'" ><t t-if="state.edit_enable">Select Country</t><t t-else="">  -  </t></option>
+                                                            <t t-if="Object.keys(state.employee_data).length >0">
+                                                                <option t-att-selected="state.employee_data.address_home_id.state_id[0] == user_state[0] ? 'selected' : '' " t-foreach="state.employee_data.state_ids" t-as="user_state" t-key="user_state[0]" t-att-value="user_state[0]" >
+                                                                    <t t-esc="user_state[1]"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label>Zip</label>
+                                                        <input type="text" t-attf-placeholder="{{state.edit_enable ? 'Zip Code' : '  -  '}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-attf-value="{{state.employee_data.address_home_id.zip}}" t-on-input="(e)=> onChangeField(e,'zip')"/>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label>Country</label>
+                                                        <select  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-change="(value) => changeCountry(value)">
+                                                            <option t-att-selected="state.employee_data.address_home_id.country_id ? '' : 'selected'" ><t t-if="state.edit_enable">Select Country</t><t t-else="">  -  </t></option>
+                                                            <t t-if="Object.keys(state.employee_data).length >0">
+                                                                <option  t-att-selected="state.employee_data.address_home_id.country_id[0] == country[0] ? 'selected' : ''" t-foreach="state.employee_data.countries_ids" t-as="country" t-key="country[0]" t-att-value="country[0]" >
+                                                                    <t t-esc="country[1]"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </t>
+                                    <t t-elif="state.current_page == 2">
+<!--                                            <header>Registration</header>-->
+                                        <header>
+                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                <div>Work Details</div>
+                                                <div style="display:flex;" t-if="state.edit_enable">
+                                                    <div style="margin-right:8px;" class="edit-button" t-on-click="discardChanges">
+                                                        <h2 style="margin:0;font-size:1.1rem;">Discard</h2>
+                                                    </div>
+                                                    <div class="edit-button" t-on-click="saveChanges">
+                                                        <h2 style="margin:0;font-size:1.1rem;">Save</h2>
+                                                    </div>
+                                                </div>
+                                                <t  t-else="">
+                                                    <div class="edit-button" t-on-click="editButton">
+                                                        <h2 style="margin:0;font-size:1.1rem;">Edit</h2>
+                                                    </div>
+
+                                                </t>
+
+                                            </div>
+                                        </header>
+                                        <div class="form-view">
+                                        <div class="form first">
+                                            <div class="details personal">
+<!--                <span class="title">Personal Details</span>-->
+
+                                                <div class="fields">
+                                                    <div class="input-field">
+                                                        <label>Work Email</label>
+                                                        <input type="text"   t-attf-placeholder="{{state.edit_enable ? 'Work Email' : '  -  '}}" t-attf-value="{{state.employee_data.work_email}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'work_email')"/>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label>Work Mobile</label>
+                                                        <input type="text"  t-attf-placeholder="{{state.edit_enable ? 'Work Mobile' : '  -  '}}"  t-attf-value="{{state.employee_data.mobile_phone}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'mobile_phone')"/>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label>Work Phone</label>
+                                                        <input type="text"  t-attf-placeholder="{{state.edit_enable ? 'Work Phone' : '  -  '}}" t-attf-value="{{state.employee_data.work_phone}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'work_phone')"/>
+                                                    </div>
+                                                    <div class="input-field">
+                                                        <label>Department</label>
+                                                        <input type="text" placeholder="  -  " disabled="disabled"  t-attf-value="{{state.employee_data.department_id[1]}}" />
+                                                    </div>
+                                                    <div class="input-field">
+                                                        <label>Manger</label>
+                                                        <input type="text" placeholder="  -  " disabled="disabled"  t-attf-value="{{state.employee_data.parent_id[1]}}"/>
+                                                    </div>
+                                                    <div class="input-field">
+                                                        <label>Coach</label>
+                                                        <input type="text" placeholder="  -  " disabled="disabled"  t-attf-value="{{state.employee_data.coach_id[1]}}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="details ID">
+                                                <span class="title">Schedule</span>
+                                                <div class="fields">
+                                                    <div class="input-field">
+                                                        <label>Work Hours</label>
+                                                        <input type="text" placeholder="  -  " disabled="disabled" t-attf-value="{{state.employee_data.resource_calendar_id[1]}}"/>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label>Time Zone</label>
+                                                        <input type="text" placeholder="  -  " disabled="disabled" t-attf-value="{{state.employee_data.tz}}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="details ID">
+                                                <span class="title">Approvers</span>
+                                                <div class="fields">
+                                                    <div class="input-field">
+                                                        <label>Time Off</label>
+                                                        <input type="text" placeholder="  -  " disabled="disabled" t-attf-value="{{state.employee_data.leave_manager_id[1]}}"/>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label>Expense</label>
+                                                        <input type="text" placeholder="  -  " disabled="disabled" t-attf-value="{{state.employee_data.expense_manager_id[1]}}"/>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label>Time Sheet</label>
+                                                        <input type="text" placeholder="  -  " disabled="disabled" t-attf-value="{{state.employee_data.timesheet_manager_id[1]}}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+
+                                        </t>
+                                    <t t-elif="state.current_page == 3">
+<!--                                            <header>Registration</header>-->
+                                        <header>Reset Password</header>
+                                        <div class="form-view">
+                                        <div class="form first">
+                                            <div class="details personal">
+<!--                <span class="title">Personal Details</span>-->
+
+                                                <div class="fields">
+                                                    <div class="input-field">
+                                                        <label>New Password</label>
+                                                        <input type="text" placeholder="Enter your email" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        </t>
+
+                                </div>
+                                <div class="user-container" style="">
+                                        <div class="user-container-wrapper">
+                                            <div class="icon-container" style="justify-content:center;display:flex;">
+                                                <img t-if="state.employee_data.id" style="width:100px;,height:100px"
+                                                     class="img rounded-circle"
+                                                     t-attf-src="/web/image?model=hr.employee.public&amp;field=avatar_128&amp;id={{state.employee_data.id}}"/>
+                                            </div>
+                                            <div style="text-align:center;margin: 24px 0px;" class="employee-name-box">
+                                                <div>
+                                                    <h2 style="font-weight: 600;font-size:1.3rem;">Mitchell Admin</h2>
+                                                </div>
+                                                <div>
+                                                    <h4 style="font-weight: 500;font-size:1rem;">Chief Executive Officer</h4>
+                                                </div>
+                                            </div>
+                                            <div class="profile-buttons-container" style="margin:18px 0px;">
+                                                <div t-on-click="()=> changeTab(1)"
+                                                     t-attf-class="profile-buttons {{state.current_page == 1 ? 'profile-buttons-active' :''}}">
+                                                    <h2>Personal Details</h2>
+                                                </div>
+                                                <div t-on-click="()=> changeTab(2)"
+                                                     t-attf-class="profile-buttons {{state.current_page == 2 ? 'profile-buttons-active' :''}}">
+                                                    <h2>Company Details</h2>
+                                                </div>
+                                                <div t-on-click="()=> changeTab(3)"
+                                                     t-attf-class="profile-buttons {{state.current_page == 3 ? 'profile-buttons-active' :''}}">
+                                                    <h2>Reset Password</h2>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                            </div>
+                            <div style="padding:30px">
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
 
 
 

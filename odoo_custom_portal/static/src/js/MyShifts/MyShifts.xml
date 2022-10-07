@@ -17,16 +17,10 @@
                         <i class='bx bx-chevron-down'></i>
                     </div>
                 </nav>
-                    <div
-                         t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;height:100vh;width:100%">
-                        <div class="lds-dual-ring"></div>
+                    <div class="home-content">
+                        <iframe width="100%" height="500px" frameborder="0" t-attf-src="/my/shift-gannt-view"/>
                     </div>
 
-                    <div t-attf-style="display:{{loading.is_loading ? 'none':'block'}}" class="home-content">
-                        <div style="display: flex;flex-flow: row wrap;height: 100%;align-content: flex-start;" class="leave-balance-data">
-
-                        </div>
-                    </div>
             </section>
 
         </t>

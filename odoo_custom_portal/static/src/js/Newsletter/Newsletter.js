@@ -29,12 +29,12 @@ export class Newsletter extends Component {
         useEffect(
             () => {
                 this.loading.is_loading = true
-                this.getDataUpdateState().then((data) => {
-                    this.loading.is_loading=false
-                    if (data.length > 0) {
-                        this.state.employee_data = data[0].employee_data
-                    }
-                })
+                // this.getDataUpdateState().then((data) => {
+                //     this.loading.is_loading=false
+                //     if (data.length > 0) {
+                //         this.state.employee_data = data[0].employee_data
+                //     }
+                // })
             },
             () => []
         );

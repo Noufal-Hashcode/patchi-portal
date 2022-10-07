@@ -4,7 +4,7 @@
 
     <t t-name="odoo_custom_portal.MainPortal" owl="1">
         <div style="height:100%;">
-            <div class="home-wrapper">
+            <div class="home-wrapper" style="overflow-x: hidden;">
             <div t-attf-class="sidebar {{main_menu.active ? 'active' : '' }}" style="font-family:'Montserrat'">
                 <div class="logo-details">
 <!--                        <div class="user-icon"></div>-->
@@ -50,6 +50,8 @@
                 </ul>
             </div>
             <t t-if="main_menu.is_main_dashboard_visible">
+<!--                                <MyProfile onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>-->
+
                 <DashBoard onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
             </t>
             <t t-elif="main_menu.is_my_profile_visible">
@@ -63,6 +65,8 @@
             </t>
             <t t-elif="main_menu.is_downloads_visible">
                 <Downloads onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+<!--                <DashBoard onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>-->
+
             </t>
             <t t-elif="main_menu.is_newsletter_visible">
                 <Newsletter onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
