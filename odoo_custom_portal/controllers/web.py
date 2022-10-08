@@ -6,6 +6,7 @@ import odoo
 import io
 import re
 from odoo import http
+import operator
 from odoo.addons.web.controllers import main
 from odoo.http import content_disposition, Controller, request, route
 from odoo.addons.portal.controllers.portal import CustomerPortal
@@ -16,6 +17,8 @@ from odoo import exceptions, SUPERUSER_ID
 from odoo.tools import consteq
 from PyPDF2 import PdfFileReader, PdfFileWriter
 from odoo.tools.safe_eval import safe_eval
+from odoo.exceptions import AccessError, UserError, AccessDenied
+from odoo.tools.translate import _
 
 DBNAME_PATTERN = '^[a-zA-Z0-9][a-zA-Z0-9_.-]+$'
 db_monodb = http.db_monodb
@@ -61,13 +64,6 @@ class PortalHomePage(CustomerPortal):
         # print(action_id.id)
         return request.render("odoo_custom_portal.odoo_custom_portal_shift",
                               {'session_info': self._prepare_project_sharing_session_info()}, )
-
-
-
-    # @http.route(['/my/my-profile'], type='http', auth="user", website=True)
-    # def my_profile(self, **kw):
-    #     values = self._prepare_portal_layout_values()
-    #     return request.render("odoo_custom_portal.portal_my_profile", values)
 
     @http.route(['/odoo_custom_portal/dashboard_data'], type='json', auth="user", website=True)
     def dash_board(self, page_number, items_per_page):
@@ -126,14 +122,13 @@ class PortalHomePage(CustomerPortal):
                               request.env['res.country.state'].sudo().search([])]
 
             }
-            print([{country.id, country.display_name} for country in
-                   request.env['res.country'].sudo().search([])])
+
         for attendance in attendances:
             attendances_data.append({
                 'id': attendance.id,
                 'check_in': attendance.check_in,
                 'check_out': attendance.check_out,
-                'worked_hours': float_round(68.348787, precision_rounding=0.01)
+                'worked_hours': attendance.worked_hours
             })
 
         for leave_request in leave_requests:
@@ -184,7 +179,7 @@ class PortalHomePage(CustomerPortal):
                 'phone': employee.phone,
                 'children': employee.children,
                 'gender': employee.gender,
-                'marital': [employee.marital, dict(employee._fields['marital'].selection)[employee.marital]],
+                'marital': employee.marital,
                 'marital_statuses': dict(employee._fields['marital'].selection),
                 'emergency_contact': employee.emergency_contact,
                 'emergency_phone': employee.emergency_phone,
@@ -214,21 +209,24 @@ class PortalHomePage(CustomerPortal):
     @http.route(['/odoo_custom_portal/my-profile/save-data'], type='json', auth="user", website=True)
     def my_profile_save_data(self, saving_data):
         data = []
+        print(saving_data)
         employee_id = request.env.user.employee_id.id
         employee = request.env['hr.employee'].sudo().browse(employee_id)
         if len(saving_data) > 0:
             if len(employee) == 1:
                 employee_data = {
                     'birthday': saving_data['birthday'],
-                    # 'marital': saving_data['marital'],
+                    'marital': saving_data['marital'],
                     'children': saving_data['children'],
                     'emergency_contact': saving_data['emergency_contact'],
                     'emergency_phone': saving_data['emergency_phone'],
-
+                    'work_email': saving_data['work_email'],
+                    'mobile_phone': saving_data['mobile_phone'],
+                    'work_phone': saving_data['work_phone'],
                 }
                 employee.write(employee_data)
+                print(employee_data)
 
-            print(saving_data['private_email'])
             address_id = employee.address_home_id.write({
                 'email': saving_data['private_email'],
                 'phone': saving_data['phone'],
@@ -309,28 +307,28 @@ class PortalHomePage(CustomerPortal):
                 raise
         return pay_slips_sudo
 
-    @route(['/my/payslips/pdf/download'], type='http', auth="public", website=True)
-    def portal_my_payslips_report(self, access_token=None, **kw):
-        # """ Print delivery slip for customer, using either access rights or access token
-        # to be sure customer has access """
-        # try:
-        #     pay_slips_sudo = self._stock_picking_check_access(ids, access_token=access_token)
-        # except exceptions.AccessError:
-        #     return request.redirect('/my')
-        #
-        # # print report as SUPERUSER, since it require access to product, taxes, payment term etc.. and portal does not have those access rights.
-        # pdf = request.env.ref('stock.action_report_delivery').with_user(SUPERUSER_ID)._render_qweb_pdf([pay_slips_sudo.id])[0]
-        # pdfhttpheaders = [
-        #     ('Content-Type', 'application/pdf'),
-        #     ('Content-Length', len(pdf)),
-        # ]
-        # return request.make_response(pdf, headers=pdfhttpheaders)
-        pdf = request.env.ref('hr_payroll.action_report_payslip').with_user(SUPERUSER_ID)._render_qweb_pdf([5])[0]
-        pdfhttpheaders = [
-            ('Content-Type', 'application/pdf'),
-            ('Content-Length', len(pdf)),
-        ]
-        return request.make_response(pdf, headers=pdfhttpheaders)
+    # @route(['/my/payslips/pdf/download'], type='http', auth="public", website=True)
+    # def portal_my_payslips_report(self, access_token=None, **kw):
+    #     # """ Print delivery slip for customer, using either access rights or access token
+    #     # to be sure customer has access """
+    #     # try:
+    #     #     pay_slips_sudo = self._stock_picking_check_access(ids, access_token=access_token)
+    #     # except exceptions.AccessError:
+    #     #     return request.redirect('/my')
+    #     #
+    #     # # print report as SUPERUSER, since it require access to product, taxes, payment term etc.. and portal does not have those access rights.
+    #     # pdf = request.env.ref('stock.action_report_delivery').with_user(SUPERUSER_ID)._render_qweb_pdf([pay_slips_sudo.id])[0]
+    #     # pdfhttpheaders = [
+    #     #     ('Content-Type', 'application/pdf'),
+    #     #     ('Content-Length', len(pdf)),
+    #     # ]
+    #     # return request.make_response(pdf, headers=pdfhttpheaders)
+    #     pdf = request.env.ref('hr_payroll.action_report_payslip').with_user(SUPERUSER_ID)._render_qweb_pdf([5])[0]
+    #     pdfhttpheaders = [
+    #         ('Content-Type', 'application/pdf'),
+    #         ('Content-Length', len(pdf)),
+    #     ]
+    #     return request.make_response(pdf, headers=pdfhttpheaders)
 
     @route(["/my/payslips/pdf/download"], type='http', auth="public", website=True)
     def get_payroll_report_print(self, list_ids='', **post):
@@ -376,3 +374,123 @@ class PortalHomePage(CustomerPortal):
     # @http.route(['/web/dataset/call_kw', '/web/dataset/call_kw/<path:path>'], type='json', auth="user")
     # def call_kw(self, model, method, args, kwargs, path=None):
     #     return self._call_kw(model, method, args, kwargs)
+
+    # @http.route(['/odoo_custom_portal/my-profile/save-data'], type='json', auth="user", website=True)
+    # def my_profile_save_data(self, saving_data):
+    #     data = []
+    #     employee_id = request.env.user.employee_id.id
+    #     employee = request.env['hr.employee'].sudo().browse(employee_id)
+    #     if len(saving_data) > 0:
+    #         if len(employee) == 1:
+    #             employee_data = {
+    #                 'birthday': saving_data['birthday'],
+    #                 # 'marital': saving_data['marital'],
+    #                 'children': saving_data['children'],
+    #                 'emergency_contact': saving_data['emergency_contact'],
+    #                 'emergency_phone': saving_data['emergency_phone'],
+    #
+    #             }
+    #             employee.write(employee_data)
+    #
+    #         print(saving_data['private_email'])
+    #         address_id = employee.address_home_id.write({
+    #             'email': saving_data['private_email'],
+    #             'phone': saving_data['phone'],
+    #             'street': saving_data['address_home_id']['street'],
+    #             'street2': saving_data['address_home_id']['street2'],
+    #             'city': saving_data['address_home_id']['city'],
+    #             'state_id': saving_data['address_home_id']['state_id'],
+    #             'country_id': saving_data['address_home_id']['country_id'],
+    #             'zip': saving_data['address_home_id']['zip'],
+    #
+    #         })
+    #
+    #     return True
+
+    @http.route(['/odoo_custom_portal/warnings'], type='json', auth="user", website=True)
+    def warnings(self, page_number, items_per_page):
+
+        employee_id = request.env.user.employee_id.id
+        employee = request.env['hr.employee'].sudo().browse(employee_id)
+        # ('employee_id', '=', employee_id)
+        warnings_count = request.env['hc.warning'].sudo().search_count([])
+        warnings = request.env['hc.warning'].sudo().search([], limit=items_per_page,
+                                                           order='id DESC', offset=(page_number - 1) * items_per_page)
+        warnings_data = []
+
+        for warning in warnings:
+            # print(dict(leave_request._fields['state'].selection)[leave_request.state])
+            warnings_data.append({
+                'id': warning.id,
+                'name': warning.name,
+                'employee_id': [warning.employee_id.id,
+                                warning.employee_id.name] if warning.employee_id else False,
+                'department_id': [warning.department_id.id,
+                                  warning.department_id.name] if warning.department_id else False,
+                'type_id': [warning.type_id.id,
+                            warning.type_id.name] if warning.type_id else False,
+                'type': dict(warning.type_id._fields['type'].selection)[warning.type_id.type],
+                'attachment_ids': [
+                    {'id': attachment.id, 'local_url': attachment.local_url, 'display_name': attachment.display_name,
+                     'website_url': attachment.website_url} for attachment in warning.attachment_ids]
+            })
+            print(warning.attachment_ids)
+
+        return [{'warnings_data': warnings_data, 'warnings_count': warnings_count, }]
+
+    @http.route(['/portal/web/image',
+                 '/portal/web/image/<string:xmlid>',
+                 '/portal/web/image/<string:xmlid>/<string:filename>',
+                 '/portal/web/image/<string:xmlid>/<int:width>x<int:height>',
+                 '/portal/web/image/<string:xmlid>/<int:width>x<int:height>/<string:filename>',
+                 '/portal/web/image/<string:model>/<int:id>/<string:field>',
+                 '/portal/web/image/<string:model>/<int:id>/<string:field>/<string:filename>',
+                 '/portal/web/image/<string:model>/<int:id>/<string:field>/<int:width>x<int:height>',
+                 '/portal/web/image/<string:model>/<int:id>/<string:field>/<int:width>x<int:height>/<string:filename>',
+                 '/portal/web/image/<int:id>',
+                 '/portal/web/image/<int:id>/<string:filename>',
+                 '/portal/web/image/<int:id>/<int:width>x<int:height>',
+                 '/portal/web/image/<int:id>/<int:width>x<int:height>/<string:filename>',
+                 '/portal/web/image/<int:id>-<string:unique>',
+                 '/portal/web/image/<int:id>-<string:unique>/<string:filename>',
+                 '/portal/web/image/<int:id>-<string:unique>/<int:width>x<int:height>',
+                 '/portal/web/image/<int:id>-<string:unique>/<int:width>x<int:height>/<string:filename>'], type='http',
+                auth="user")
+    def content_image(self, xmlid=None, model='ir.attachment', id=None, field='datas',
+                      filename_field='name', unique=None, filename=None, mimetype=None,
+                      download=None, width=0, height=0, crop=False, access_token=None,
+                      **kwargs):
+        # other kwargs are ignored on purpose
+        return request.env['ir.http'].with_user(SUPERUSER_ID)._content_image(xmlid=xmlid, model=model, res_id=id,
+                                                                             field=field,
+                                                                             filename_field=filename_field,
+                                                                             unique=unique, filename=filename,
+                                                                             mimetype=mimetype,
+                                                                             download=download, width=width,
+                                                                             height=height, crop=crop,
+                                                                             quality=int(kwargs.get('quality', 0)),
+                                                                             access_token=access_token)
+
+    @http.route('/portal/web/session/change_password', type='json', auth="user")
+    def change_password(self, fields):
+        print(fields)
+        old_password = fields['old_password']
+        new_password = fields['new_password']
+        confirm_password = fields['confirm_password']
+
+        if not (old_password.strip() and new_password.strip() and confirm_password.strip()):
+            return {'error': _('You cannot leave any password empty.')}
+        if new_password != confirm_password:
+            return {'error': _('The new password and its confirmation must be identical.')}
+
+        msg = _("Error, password not changed !")
+        try:
+            if request.env['res.users'].change_password(old_password, new_password):
+                return {'new_password': new_password}
+        except AccessDenied as e:
+            msg = e.args[0]
+            if msg == AccessDenied().args[0]:
+                msg = _('The old password you provided is incorrect, your password was not changed.')
+        except UserError as e:
+            msg = e.args[0]
+        return {'error': msg}

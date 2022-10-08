@@ -28,7 +28,7 @@ export class Alerts extends Component {
 
         useEffect(
             () => {
-                this.loading.is_loading = true
+                // this.loading.is_loading = true
                 // this.getDataUpdateState().then((data) => {
                 //     this.loading.is_loading=false
                 //     if (data.length > 0) {
@@ -43,7 +43,7 @@ export class Alerts extends Component {
     getDataUpdateState = async (part_id) => {
 
         let data = await this.rpcService(`/odoo_custom_portal/dashboard_data`);
-        console.log(data)
+        // console.log(data)
         return data
     }
 

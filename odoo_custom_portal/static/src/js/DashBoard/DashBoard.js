@@ -9,7 +9,7 @@ import core from 'web.core';
 import {Downloads, DownloadsPaySlipTable} from "../Downloads/Downloads";
 
 const {useState, onWillStart, useExternalListener, useRef, onPatched, onMounted} = owl.hooks;
-
+import fieldUtils from 'web.field_utils';
 export class DashBoard extends Component {
 
 
@@ -83,7 +83,7 @@ export class DashBoard extends Component {
             page_number: page_number,
             items_per_page: items_per_page
         });
-        console.log(data)
+        // console.log(data)
         return data
     }
 
@@ -153,7 +153,7 @@ export class LeaveRequestTable extends Component {
             page_number: page_number,
             items_per_page: items_per_page
         });
-        console.log(data)
+        // console.log(data)
         return data
     }
 
@@ -212,6 +212,11 @@ export class AttendanceTable extends Component {
         }
     }
 
+    timeResource =(time)=>{
+
+       return  fieldUtils.format.float_time(time)
+    }
+
 
 
     getDataUpdateState = async (page_number, items_per_page) => {
@@ -220,7 +225,7 @@ export class AttendanceTable extends Component {
             page_number: page_number,
             items_per_page: items_per_page
         });
-        console.log(data)
+        // console.log(data)
         return data
     }
 

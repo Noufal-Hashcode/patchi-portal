@@ -56,7 +56,7 @@ export class PortalShiftView extends Component {
     //     );
     // }
         async _showView() {
-        const { action_name, project_id } = session;
+
         await this.actionService.doAction(
             'odoo_custom_portal.planning_action_schedule_by_resource_shift',
             {

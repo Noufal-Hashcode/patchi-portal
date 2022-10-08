@@ -606,32 +606,14 @@ nav {
 //  }
 //}
 
-.skeleton {
-  animation: skeleton-loading 1s linear infinite alternate;
-}
+//.skeleton {
+//  animation: skeleton-loading 1s linear infinite alternate;
+//}
 
 .display-none {
   display: none;
 }
 
-.text-skeleton {
-  height: 10px;
-  width: 100%;
-  margin-right: 14px;
-  border-radius: 0.2rem;
-}
-
-
-//@keyframes {
-//  skeleton-loading {
-//    0% {
-//      background-color: hsl(200, 20%, 70%);
-//    }
-//  }
-//  100% {
-//    background-color: hsl(200, 20%, 95%);
-//  }
-//}
 
 
 @media (max-width: 550px) {

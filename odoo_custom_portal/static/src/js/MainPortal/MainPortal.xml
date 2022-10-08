@@ -10,7 +10,7 @@
 <!--                        <div class="user-icon"></div>-->
                         <img class="user-icon" src="/odoo_custom_portal/static/src/img/logo-large.jpg" alt=""/>
                 </div>
-                <ul class="nav-links">
+                <ul class="nav-links" style="flex:1">
                     <li>
                         <div class="nav-link-div" t-on-click="()=>onClickMainMenuItem('main_dashboard')" t-attf-style ="{{ main_menu.is_main_dashboard_visible ? 'border-left: 5px solid #f8ce46;background-color: #2b2a26;' :''}};" >
                             <i class="fa fa-home icon"/>
@@ -46,6 +46,14 @@
                             <i class="fa fa-newspaper-o icon"/>
                             <span class="links_name">Newsletter</span>
                         </div>
+                    </li>
+                </ul>
+                <ul class="nav-links" style="">
+                    <li >
+                        <a class="nav-link-div" href="/web/session/logout" t-attf-style ="">
+                            <i class="fa fa-sign-out"/>
+                            <span class="links_name">Log Out</span>
+                        </a>
                     </li>
                 </ul>
             </div>

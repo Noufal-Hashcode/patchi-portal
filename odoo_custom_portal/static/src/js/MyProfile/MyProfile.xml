@@ -23,6 +23,26 @@
                         <div class="lds-dual-ring"></div>
                     </div>
 
+                    <div t-if="state.error_display" style="height: 100vh;width: 100%;position: relative;">
+                        <div style="position: fixed;z-index: 1000;top: 0;bottom: 0;left: 0;right: 0;background: rgba(0, 0, 0, 0.7);transition: opacity 500ms;">
+                            <div style=" margin: 8rem auto;max-width: 700px;position: relative;transition: all 5s ease-in-out;">
+                                <div style="padding: 20px;background: #fff;border-radius: 5px;margin:0px 15px;">
+                                    <div style="display:flex;justify-content:flex-end;">
+                                        <div t-on-click="disablePopUp">
+                                            <i class="fa fa-times"></i>
+                                        </div>
+                                    </div>
+                                    <div style="overflow-x: auto;">
+                                        <div>
+                                            <h2 style="font-size:1.8rem;font-weight:600;">Error</h2>
+                                        </div>
+                                        <h3 style="font-size: 1.1rem;">Please check your inputs</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div t-else="" class="home-content">
                         <div class="main-content">
                             <div class="main-content-wrapper">
@@ -76,10 +96,10 @@
 
                                                     <div class="input-field">
                                                         <label>Marital Status</label>
-                                                        <select  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-change="">
-                                                            <option t-att-selected="state.employee_data.marital ? '' : 'selected'" ><t t-if="state.edit_enable">Marital Status</t><t t-else="">  -  </t></option>
+                                                        <select  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-change="(value) => changeMaritalState(value)">
+                                                            <option t-att-selected="state.employee_data.marital ? '' : 'selected'" disabled="disabled" ><t t-if="state.edit_enable" >Marital Status</t><t t-else="">  -  </t></option>
                                                             <t t-if="Object.keys(state.employee_data).length >0">
-                                                                <option t-att-selected="state.employee_data.marital[0] == status ? 'selected' : '' " t-foreach="Object.keys(state.employee_data.marital_statuses)" t-as="status" t-key="status" t-att-value="status" >
+                                                                <option t-att-selected="state.employee_data.marital == status ? 'selected' : '' " t-foreach="Object.keys(state.employee_data.marital_statuses)" t-as="status" t-key="status" t-att-value="status" >
                                                                     <t t-esc="state.employee_data.marital_statuses[status]"/>
                                                                 </option>
                                                             </t>
@@ -121,7 +141,7 @@
                                                     <div class="input-field">
                                                         <label>State</label>
                                                         <select  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-change="(value) => changeState(value)">
-                                                            <option t-att-selected="state.employee_data.address_home_id.state_id ? '' : 'selected'" ><t t-if="state.edit_enable">Select Country</t><t t-else="">  -  </t></option>
+                                                            <option t-att-selected="state.employee_data.address_home_id.state_id ? '' : 'selected'" disabled="disabled" ><t t-if="state.edit_enable">Select Country</t><t t-else="">  -  </t></option>
                                                             <t t-if="Object.keys(state.employee_data).length >0">
                                                                 <option t-att-selected="state.employee_data.address_home_id.state_id[0] == user_state[0] ? 'selected' : '' " t-foreach="state.employee_data.state_ids" t-as="user_state" t-key="user_state[0]" t-att-value="user_state[0]" >
                                                                     <t t-esc="user_state[1]"/>
@@ -138,7 +158,7 @@
                                                     <div class="input-field">
                                                         <label>Country</label>
                                                         <select  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-change="(value) => changeCountry(value)">
-                                                            <option t-att-selected="state.employee_data.address_home_id.country_id ? '' : 'selected'" ><t t-if="state.edit_enable">Select Country</t><t t-else="">  -  </t></option>
+                                                            <option t-att-selected="state.employee_data.address_home_id.country_id ? '' : 'selected'" disabled="disabled" ><t t-if="state.edit_enable">Select Country</t><t t-else="">  -  </t></option>
                                                             <t t-if="Object.keys(state.employee_data).length >0">
                                                                 <option  t-att-selected="state.employee_data.address_home_id.country_id[0] == country[0] ? 'selected' : ''" t-foreach="state.employee_data.countries_ids" t-as="country" t-key="country[0]" t-att-value="country[0]" >
                                                                     <t t-esc="country[1]"/>
@@ -254,12 +274,25 @@
 
                                                 <div class="fields">
                                                     <div class="input-field">
+                                                        <label>Current Password</label>
+                                                        <input type="password" placeholder="Enter your current password" t-on-input="(e)=> onChangeField(e,'old_password')" />
+                                                    </div>
+                                                    <div class="input-field">
                                                         <label>New Password</label>
-                                                        <input type="text" placeholder="Enter your email" />
+                                                        <input type="password" placeholder="New Password" t-on-input="(e)=> onChangeField(e,'new_password')" />
+                                                    </div>
+                                                    <div class="input-field">
+                                                        <label>Confirm Password</label>
+                                                        <input type="password" placeholder="Confirm your new password" t-on-input="(e)=> onChangeField(e,'confirm_password')" />
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                            <div>
+                                                <div t-on-click="changePassword" style="padding:8px 12px;background-color:#aa9828;max-width:200px;display: flex;justify-content: center;align-items: center;padding: 8px 4px;font-size: 1.3rem;color: #fff;font-weight: 500;border-radius: 5px;height: 42px;margin: 0px 0px 8px 0px;">
+                                                    Reset Password
+                                                </div>
+                                            </div>
                                         </div>
                                         </t>
 
@@ -269,7 +302,7 @@
                                             <div class="icon-container" style="justify-content:center;display:flex;">
                                                 <img t-if="state.employee_data.id" style="width:100px;,height:100px"
                                                      class="img rounded-circle"
-                                                     t-attf-src="/web/image?model=hr.employee.public&amp;field=avatar_128&amp;id={{state.employee_data.id}}"/>
+                                                     t-attf-src="/portal/web/image?model=hr.employee.public&amp;field=avatar_128&amp;id={{state.employee_data.id}}"/>
                                             </div>
                                             <div style="text-align:center;margin: 24px 0px;" class="employee-name-box">
                                                 <div>

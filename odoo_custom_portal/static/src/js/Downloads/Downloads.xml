@@ -37,7 +37,7 @@
                                 <div class="icon-container">
                                     <img t-if="state.employee_data.id" style="width:100px;,height:100px"
                                          class="img rounded-circle"
-                                         t-attf-src="/web/image?model=hr.employee.public&amp;field=avatar_128&amp;id={{state.employee_data.id}}"/>
+                                         t-attf-src="/portal/web/image?model=hr.employee.public&amp;field=avatar_128&amp;id={{state.employee_data.id}}"/>
                                 </div>
                                 <div class="employee-name-box" style="width:100%">
                                     <div>

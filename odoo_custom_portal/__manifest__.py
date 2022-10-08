@@ -73,7 +73,7 @@
             'odoo_custom_portal/static/src/js/Alerts/Alerts.css',
             'odoo_custom_portal/static/src/js/Downloads/Downloads.scss',
             'odoo_custom_portal/static/src/js/MyProfile/MyProfile.scss',
-            'odoo_custom_portal/static/src/js/MyShifts/MyShifts.css',
+            'odoo_custom_portal/static/src/js/MyShifts/MyShifts.scss',
             'odoo_custom_portal/static/src/js/Newsletter/Newsletter.scss',
             'web/static/src/legacy/js/public/public_widget.js',
             # 'portal/static/src/js/portal_chatter.js',
@@ -100,6 +100,7 @@
         'odoo_custom_portal.assets_qweb_shift_view': [
             ('include', 'web.assets_qweb'),
             'odoo_custom_portal/static/src/js/StartShiftView/PortalShiftView.xml',
+            'odoo_custom_portal/static/src/js/StartShiftView/ControlPanelShiftView.xml',
 
         ],
         'odoo_custom_portal.shift_view_webclient': [
@@ -118,6 +119,8 @@
             'odoo_custom_portal/static/src/lib/frappe-gantt/frappe-gantt.css',
             'odoo_custom_portal/static/src/js/StartShiftView/startWebClient.js',
             'odoo_custom_portal/static/src/js/StartShiftView/PortalShiftView.js',
+            'odoo_custom_portal/static/src/js/StartShiftView/ShiftViewControlPanel.js',
+            'odoo_custom_portal/static/src/js/StartShiftView/ControlPanelShiftView.js',
 
             'web/static/src/start.js',
             'web/static/src/legacy/legacy_setup.js',

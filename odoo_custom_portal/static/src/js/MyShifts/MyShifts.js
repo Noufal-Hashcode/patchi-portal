@@ -43,7 +43,7 @@ export class MyShifts extends Component {
     getDataUpdateState = async (part_id) => {
 
         let data = await this.rpcService(`/odoo_custom_portal/dashboard_data`);
-        console.log(data)
+        // console.log(data)
         return data
     }
 

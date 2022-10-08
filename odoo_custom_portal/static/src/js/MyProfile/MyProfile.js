@@ -22,8 +22,11 @@ export class MyProfile extends Component {
             employee_data_non_edited: {},
             current_page: 1,
             edit_enable: false,
-            save_refresh_page: 1
-
+            save_refresh_page: 1,
+            old_password: '',
+            new_password: '',
+            confirm_password: '',
+            error_display:false
         })
 
         this.loading = useState({
@@ -44,7 +47,7 @@ export class MyProfile extends Component {
                         })
 
                     }).catch((e) => {
-                        console.log(e)
+                        // console.log(e)
                     })
 
                 } else {
@@ -63,13 +66,19 @@ export class MyProfile extends Component {
     changeTab = (page_number) => {
         this.state.current_page = page_number
     }
+    enablePopUp = (notice) => {
+        this.state.error_display = true
+
+    }
+    disablePopUp = (notice) => {
+        this.state.error_display = false
+
+    }
 
     changeCountry = (e) => {
         let country_id = []
         this.state.employee_data.countries_ids.forEach((line) => {
             if (line[0] === parseInt(e.target.value)) {
-                console.log(line[0])
-                console.log(e.target.value)
                 country_id = line
             }
         })
@@ -81,14 +90,30 @@ export class MyProfile extends Component {
         this.state.employee_data.state_ids.forEach((line) => {
             if (line[0] === parseInt(e.target.value)) {
                 state_id = line
-                console.log(e.target.value)
             }
         })
         this.state.employee_data.address_home_id.state_id = state_id
     }
+    changeMaritalState = (e) => {
+        this.state.employee_data.marital = e.target.value
+    }
+    changePassword = async () => {
+        let fields = {
+            old_password: this.state.old_password,
+            new_password: this.state.new_password,
+            confirm_password: this.state.confirm_password
+        }
+
+        let data = await this.rpcService(`/portal/web/session/change_password`, {fields: fields});
+        if(data.new_password){
+
+        }else{
+            this.state.error_display =true
+        }
+    }
 
     clickOption = (e) => {
-        console.log(e)
+        // console.log(e)
     }
     editButton = () => {
         this.state.edit_enable = true
@@ -107,10 +132,14 @@ export class MyProfile extends Component {
     }
     saveChanges = () => {
         this.state.save_refresh_page += 1
+        this.state.edit_enable = false
     }
 
     onChangeField = (e, field) => {
+        // console.log(e)
+
         let value = e.target.value
+        // console.log(value)
         if (field === 'private_email') {
             this.state.employee_data.private_email = value
         } else if (field === 'phone') {
@@ -137,6 +166,12 @@ export class MyProfile extends Component {
             this.state.employee_data.mobile_phone = value
         } else if (field === 'work_phone') {
             this.state.employee_data.work_phone = value
+        } else if (field === 'old_password') {
+            this.state.old_password = value
+        } else if (field === 'new_password') {
+            this.state.new_password = value
+        } else if (field === 'confirm_password') {
+            this.state.confirm_password = value
         }
 
     }
@@ -146,7 +181,7 @@ export class MyProfile extends Component {
             page_number: 1,
             items_per_page: 10
         });
-        console.log(data)
+        // console.log(data)
         return data
     }
 
@@ -160,7 +195,10 @@ export class MyProfile extends Component {
                 marital: employee_data.marital,
                 children: employee_data.children,
                 emergency_contact: employee_data.emergency_contact,
-                emergency_phone:employee_data.emergency_phone,
+                emergency_phone: employee_data.emergency_phone,
+                work_email: employee_data.work_email,
+                mobile_phone: employee_data.mobile_phone,
+                work_phone: employee_data.work_phone,
                 address_home_id: {
                     street: employee_data.address_home_id.street,
                     street2: employee_data.address_home_id.street2,
@@ -176,7 +214,7 @@ export class MyProfile extends Component {
         let data = await this.rpcService(`/odoo_custom_portal/my-profile/save-data`, {
             saving_data: saving_data,
         });
-        console.log(data)
+        // console.log(data)
         return data
     }
 
