@@ -35,7 +35,7 @@ export class MainPortal extends Component {
             // is_ready_to_load:false
         })
         this.sidebar = useRef('sidebar')
-        console.log(this.sidebar)
+        // console.log(this.sidebar)
         // useEffect(
         //     () => {
         //         console.log(this.sidebar.el.offsetWidth)
@@ -75,7 +75,7 @@ export class MainPortal extends Component {
             new_state.is_newsletter_visible = true
         }
         Object.assign(this.main_menu, new_state)
-        console.log(menu_name)
+        // console.log(menu_name)
     }
     imageUrl =()=>{
         if(this.main_menu.is_small_logo){

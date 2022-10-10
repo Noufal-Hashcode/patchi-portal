@@ -18,17 +18,16 @@ publicWidget.registry.HomePagePortal = publicWidget.Widget.extend({
      * @constructor
      */
     init: function () {
-        console.log('hello cunt')
         // this._super.apply(this, arguments);
-        console.log('hello cunt')
+
     },
     /**
      * @override
      */
     start: function () {
-        console.log('hello cunt')
+        // console.log('hello cunt')
         this.hamburger = this.$('.gantt-container-1');
-        console.log(this.hamburger)
+        // console.log(this.hamburger)
         //
         // this.searchType = this.$input.data('searchType');
         // this.order = this.$('.o_search_order_by').val();
@@ -197,8 +196,8 @@ publicWidget.registry.HomePagePortal = publicWidget.Widget.extend({
         //         form.submit();
         //     }
         // }
-        console.log(ev)
-        console.log(this.hamburger)
+        // console.log(ev)
+        // console.log(this.hamburger)
         // if (this.$('.sidebar').hasClass("active")) {
         //     this.$('.sidebar').removeClass('active')
         //     if(this.$('.user-icon').hasClass('to-small')){
