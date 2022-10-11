@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="odoo_custom_portal.Downloads" owl="1">
+
+
+                <section class="home-section" style="font-family:'Montserrat'">
+                <nav>
+                    <div class="sidebar-button">
+                        <i class='fa fa-bars icon' t-on-click="props.onClickMenu"></i>
+                        <span class="dashboard">Downloads</span>
+                    </div>
+                    <div class="profile-details">
+                        <!--<img src="images/profile.jpg" alt="">-->
+                        <span class="admin_name"></span>
+                        <i class='bx bx-chevron-down'></i>
+                    </div>
+                </nav>
+
+                    <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;height:100vh;width:100%">
+                        <div class="lds-dual-ring"></div>
+                    </div>
+
+                    <div class="home-content">
+
+                        <div>
+                            <div class="downloads-tab-container">
+                                <div class="download-tab">
+                                    <h1 class="download-tab-name">Pay Slips</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div t-attf-style="display:{{loading.is_loading ? 'none':'block'}}">
+                            <div class="user-details-box" style="">
+                            <div class="employee-icon-section">
+                                <div class="icon-container">
+                                    <img t-if="state.employee_data.id" style="width:100px;,height:100px"
+                                         class="img rounded-circle"
+                                         t-attf-src="/portal/web/image?model=hr.employee.public&amp;field=avatar_128&amp;id={{state.employee_data.id}}"/>
+                                </div>
+                                <div class="employee-name-box" style="width:100%">
+                                    <div>
+                                        <h2 style="font-weight: 600;font-size:1.3rem;"><t t-esc="state.employee_data.name"/></h2>
+                                    </div>
+                                    <div>
+                                        <h4 style="font-weight: 500;font-size:1rem;"><t t-esc="state.employee_data.job_title"/></h4>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                                <div class="employee-details">
+                                    <table class="employee-details-table">
+                                        <tr>
+                                            <td>Current Contract <span class="employee-data"><t t-if="state.employee_data.contract_id" t-esc="state.employee_data.contract_id[1]"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>First Contact Date <span class="employee-data"><t t-if="state.employee_data.first_contract_date" t-esc="state.employee_data.first_contract_date"/>
+                                                <t t-else=""> -</t></span></td>
+
+                                        </tr>
+                                        <tr>
+                                           <td>Working Hours <span class="employee-data"><t t-if="state.employee_data.resource_calendar_id" t-esc="state.employee_data.resource_calendar_id[1]"/></span></td>
+                                        </tr>
+                                    </table>
+                                    <table class="employee-details-table-small">
+                                        <tr>
+                                            <td>Current Contract <span class="employee-data"><t t-if="state.employee_data.contract_id" t-esc="state.employee_data.contract_id[1]"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>First Contact Date <span class="employee-data"><t t-if="state.employee_data.first_contract_date" t-esc="state.employee_data.first_contract_date"/>
+                                                <t t-else=""> -</t></span></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Working Hours <span class="employee-data"><t t-if="state.employee_data.resource_calendar_id" t-esc="state.employee_data.resource_calendar_id[1]"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+                                        <tr class="department-small">
+                                            <td>Department <span class="employee-data"><t t-if="state.employee_data.department_id" t-esc="state.employee_data.department_id[1]"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+                                        <tr class="department-small">
+                                            <td>Employee Type <span class="employee-data"><t t-if="state.employee_data.employee_type" t-esc="state.employee_data.employee_type"/>
+                                                <t t-else=""> -</t></span></td>
+                                        </tr>
+
+                                    </table>
+                                    <div class="employee-details-department">
+                                        <div>
+                                            <h3 style="font-size:1.4rem;">Department</h3>
+                                            <p><t t-if="state.employee_data.department_id" t-esc="state.employee_data.department_id[1]"/>
+                                                <t t-else=""> -</t></p>
+                                        </div>
+                                        <div>
+                                            <h3 style="font-size:1.4rem;">Employee Type</h3>
+                                            <p><t t-if="state.employee_data.employee_type" t-esc="state.employee_data.employee_type"/>
+                                                <t t-else=""> -</t></p>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </div>
+                            <div class="downloads-tables-container">
+                                <div class="title">Pay Slips</div>
+                                <DownloadsPaySlipTable/>
+                        </div>
+                            <div style="padding-top:30px;"></div>
+                        </div>
+
+                    </div>
+
+
+
+
+            </section>
+
+        </t>
+
+
+    <t t-name="odoo_custom_portal.DownloadsPaySlipTable" owl="1">
+        <div style="position:relative">
+            <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;top:0;bottom:0;left:0;right:0;height: 200px;">
+                        <div class="lds-dual-ring"></div>
+            </div>
+
+            <div t-attf-style="display:{{loading.is_loading ? 'none':'block'}};background-color: #fff;border-radius: 10px;" class="downloads-tables">
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="padding: 12px 0px 12px 8px;"><input class="checkbox-input-1" type="checkbox" id="HideNoStock" name="HideNoStock" value="HideNoStock" t-on-change="selectAllItems"  t-att-checked="state.all_selected" />
+                                <div class="checkbox-box-1"></div>
+                            </th>
+                            <th>Reference</th>
+                            <th>Structure</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Basic Wage</th>
+                            <th>Net Wage</th>
+                            <th>State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="state.payslips_data" t-as="payslip"
+                            t-key="payslip.id">
+                            <td style="padding: 12px 0px 12px 8px;"><input class="checkbox-input-1" type="checkbox" id="HideNoStock" name="HideNoStock" value="HideNoStock" t-on-change="() =>selectIndividualItem(payslip.id)"  t-att-checked="payslip.is_selected" />
+                                <div class="checkbox-box-1"></div>
+                            </td>
+                            <td><t t-if="payslip.number" t-esc="payslip.number"/><t t-else="">    - </t></td>
+                            <td><t t-if="payslip.struct_id[1]" t-esc="payslip.struct_id[1]"/><t t-else="">    - </t></td>
+                            <td><t t-if="payslip.date_from" t-esc="payslip.date_from"/><t t-else="">    - </t></td>
+                            <td><t t-if="payslip.date_to" t-esc="payslip.date_to"/><t t-else="">    - </t></td>
+                            <td><t t-if="payslip.basic_wage" t-esc="payslip.basic_wage"/><t t-else="">    - </t></td>
+                            <td><t t-if="payslip.net_wage" t-esc="payslip.net_wage"/><t t-else="">   - </t></td>
+                            <td><t t-if="payslip.state" t-esc="payslip.state"/><t t-else="">   - </t></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="padding: 10px; display:flex;justify-content:end;width:100%;">
+                    <div t-on-click="printReport" t-if="state.selected_items.length>0" style="border-radius: 4px;border: 1px solid #aa9828;display: flex;justify-content: center;align-items: center;padding: 6px 6px;margin-right: 15px;background-color: #aa9828;">
+                        <h2 style="margin: 0;font-size: 1.1rem;color: #fff;">Print</h2>
+                    </div>
+
+                    <div style="display:flex;justify-content:center;align-items:center;">
+                        <p style="margin:0;font-weight:700;margin-right: 15px;"><span t-esc="(state.items_per_page*(state.current_page-1))+1"/><span> - </span><span t-esc="(state.items_per_page*(state.current_page))"/><span style="margin:0px 10px;">/</span><span t-esc="state.payslips_count"/></p>
+                    </div>
+
+                    <div class="pagination-tabs">
+                        <div t-attf-style="opacity:{{(state.current_page > 1) ? 1 : 0.5}}" class="pagination-button" t-on-click="backButton">
+                            <span><i class='fa fa-chevron-left'></i></span>
+                        </div>
+                        <div t-attf-style="opacity:{{(state.payslips_count > state.items_per_page*state.current_page) ? 1: 0.5}};" class="pagination-button" t-on-click="nextButton">
+                            <span><i class='fa fa-chevron-right'></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+</templates>
+
+
+
