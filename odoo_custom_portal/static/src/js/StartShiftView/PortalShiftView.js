@@ -61,9 +61,6 @@ export class PortalShiftView extends Component {
             'odoo_custom_portal.planning_action_schedule_by_resource_shift',
             {
                 clearBreadcrumbs: true,
-                additionalContext: {
-                    // active_id: project_id,
-                }
             }
         );
     }

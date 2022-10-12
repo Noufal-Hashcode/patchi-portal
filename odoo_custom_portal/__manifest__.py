@@ -13,12 +13,6 @@
         'mail', 'portal', 'project', 'hr_timesheet',
     ],
     'data': [
-        'views/home.xml',
-        # 'views/my_profile.xml',
-        # 'views/my_shifts.xml',
-        # 'views/newsletter.xml',
-        # 'views/alerts.xml',
-        # 'views/downloads_payslips.xml',
         'views/header_template.xml',
 
     ],
@@ -29,19 +23,12 @@
     'application': True,
     'assets': {
         'web.assets_qweb': [
-            # 'odoo_custom_portal/static/src/xml/home.xml',
         ],
         'web.assets_backend': [
-            # 'odoo_custom_portal/views/views.xml',
-            # 'odoo_custom_portal/static/src/xml/home.xml',
-            # "odoo_custom_portal/static/src/css/home.css",
-            # "odoo_custom_portal/static/src/js/home.js",
+
         ],
         'web.assets_frontend': [
-            # 'odoo_custom_portal/views/views.xml',
-            # "odoo_custom_portal/static/src/css/home.css",
-            # 'odoo_custom_portal/static/src/xml/home.xml',
-            # "odoo_custom_portal/static/src/js/home.js",
+
         ],
         'odoo_custom_portal.assets_qweb': [
             ('include', 'web.assets_qweb'),
@@ -67,7 +54,6 @@
             ('remove', 'mail/static/src/components/chat_window_manager/chat_window_manager.js'),
             ('remove', 'mail/static/src/services/chat_window_service/chat_window_service.js'),
             'odoo_custom_portal/static/src/fonts/fonts.scss',
-            'odoo_custom_portal/static/src/lib/frappe-gantt/frappe-gantt.css',
             'odoo_custom_portal/static/src/js/MainPortal/MainPortal.css',
             'odoo_custom_portal/static/src/js/DashBoard/DashBoard.scss',
             'odoo_custom_portal/static/src/js/Alerts/Alerts.css',
@@ -81,7 +67,6 @@
             # 'project/static/src/project_sharing/search/favorite_menu/custom_favorite_item.xml',
             # 'project/static/src/project_sharing/**/*.js',
             # 'project/static/src/scss/project_sharing/*',
-            'odoo_custom_portal/static/src/lib/frappe-gantt/frappe-gantt.js',
             'odoo_custom_portal/static/src/js/StartPortal/startWebClient.js',
             'odoo_custom_portal/static/src/js/StartPortal/PortalClient.js',
             'odoo_custom_portal/static/src/js/MainPortal/MainPortal.js',
@@ -116,7 +101,6 @@
             ('remove', 'mail/static/src/components/chat_window_manager/chat_window_manager.js'),
             ('remove', 'mail/static/src/services/chat_window_service/chat_window_service.js'),
             'odoo_custom_portal/static/src/fonts/fonts.scss',
-            'odoo_custom_portal/static/src/lib/frappe-gantt/frappe-gantt.css',
             'odoo_custom_portal/static/src/js/StartShiftView/startWebClient.js',
             'odoo_custom_portal/static/src/js/StartShiftView/PortalShiftView.js',
             'odoo_custom_portal/static/src/js/StartShiftView/ShiftViewControlPanel.js',

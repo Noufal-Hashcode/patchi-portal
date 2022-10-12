@@ -34,7 +34,7 @@ export class DashBoard extends Component {
         this.barcode_line = useRef('shift_chart')
         this.canvasRef = useRef("canvas");
         this.containerRef = useRef("container");
-        useAssets({jsLibs: ["/odoo_custom_portal/static/src/lib/frappe-gantt/frappe-gantt.js",]});
+        // useAssets({jsLibs: ["/odoo_custom_portal/static/src/lib/frappe-gantt/frappe-gantt.js",]});
 
         useEffect(
             () => {
