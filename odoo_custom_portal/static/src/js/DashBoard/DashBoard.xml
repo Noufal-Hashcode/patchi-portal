@@ -17,8 +17,7 @@
                         <i class='bx bx-chevron-down'></i>
                     </div>
                 </nav>
-                    <div
-                         t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;height:100vh;width:100%">
+                    <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;height:100vh;width:100%">
                         <div class="lds-dual-ring"></div>
                     </div>
 
@@ -29,7 +28,7 @@
                                 <div class="icon-container">
                                     <img t-if="state.employee_data.id" style="width:100px;,height:100px"
                                          class="img rounded-circle"
-                                         t-attf-src="/web/image?model=hr.employee.public&amp;field=avatar_128&amp;id={{state.employee_data.id}}"/>
+                                         t-attf-src="/portal/web/image?model=hr.employee.public&amp;field=avatar_128&amp;id={{state.employee_data.id}}"/>
                                 </div>
                                 <div class="employee-name-box" style="width:100%">
                                     <div>
@@ -162,16 +161,17 @@
                         <div class="sales-boxes">
                             <div class="leave-balances box" style="width:100%;">
                                 <div class="title">My Shifts</div>
-                                <div t-ref="shift_chart" >
 <!--                                    <div class="leave-balance-data" ></div>-->
 <!--                                    <svg id="gantt"></svg>-->
-                                    <svg class="gantt-selector"></svg>
+<!--                                    <svg class="gantt-selector"></svg>-->
+                                <div class="leave-balance-data">
+                                    <iframe width="100%" height="280px" frameborder="0" t-attf-src="/my/shift-gannt-view"/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="sales-boxes">
-                            <div class="leave-balances box">
+                            <div class="leave-balances">
                                 <div class="title">Leave Balances</div>
                                 <div class="leave-balance-data" style="display: flex;flex-flow: row wrap;height: 100%;align-content: flex-start;">
                                         <div t-foreach="state.leave_balances_data" t-as="leave"
@@ -203,55 +203,58 @@
                                     <div style="flex: 1 1 auto;width: 250px;"/>
                                 </div>
                             </div>
-                            <div class="leave-requests box">
+                            <div class="leave-requests">
                                 <div class="title">Leave Requests</div>
-                                <div class="leave-request-data">
-                                    <table class="leave-request-table" style="width:100%">
-                                        <thead>
-                                            <tr class="table100-head">
-                                                <th>Type</th>
-                                                <th>Start</th>
-                                                <th>End</th>
-                                                <th>Duration</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr t-foreach="state.leave_requests_data" t-as="leave_request"
-                                                t-key="leave_request.id">
-                                                <td><t t-esc="leave_request.holiday_status_id[1]"/></td>
-                                                <td><t t-esc="leave_request.date_from"/></td>
-                                                <td><t t-esc="leave_request.date_to"/></td>
-                                                <td><t t-esc="leave_request.duration_display"/></td>
-                                                <td><t t-esc="leave_request.state"/></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    <LeaveRequestTable/>
+
+<!--                                <div class="leave-request-data">-->
+<!--                                    <table class="leave-request-table" style="width:100%">-->
+<!--                                        <thead>-->
+<!--                                            <tr class="table100-head">-->
+<!--                                                <th>Type</th>-->
+<!--                                                <th>Start</th>-->
+<!--                                                <th>End</th>-->
+<!--                                                <th>Duration</th>-->
+<!--                                                <th>Status</th>-->
+<!--                                            </tr>-->
+<!--                                        </thead>-->
+<!--                                        <tbody>-->
+<!--                                            <tr t-foreach="state.leave_requests_data" t-as="leave_request"-->
+<!--                                                t-key="leave_request.id">-->
+<!--                                                <td><t t-esc="leave_request.holiday_status_id[1]"/></td>-->
+<!--                                                <td><t t-esc="leave_request.date_from"/></td>-->
+<!--                                                <td><t t-esc="leave_request.date_to"/></td>-->
+<!--                                                <td><t t-esc="leave_request.duration_display"/></td>-->
+<!--                                                <td><t t-esc="leave_request.state"/></td>-->
+<!--                                            </tr>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                </div>-->
                             </div>
                         </div>
                         <div class="sales-boxes">
-                            <div class="leave-balances box">
+                            <div class="leave-balances">
                                 <div class="title">Attendance</div>
-                                <div class="leave-balance-data">
-                                    <table class="attendance-data-table" style="width:100%">
-                                        <thead>
-                                            <tr class="table100-head">
-                                                <th class="column1">Check In</th>
-                                                <th class="column2">Check Out</th>
-                                                <th class="column3">Worked Hours</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr t-foreach="state.attendances_data" t-as="attendance"
-                                                t-key="attendance.id">
-                                                <td><t t-esc="attendance.check_in"/></td>
-                                                <td><t t-esc="attendance.check_out"/></td>
-                                                <td><t t-esc="attendance.worked_hours"/></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <AttendanceTable/>
+<!--                                <div class="leave-balance-data">-->
+<!--                                    <table class="attendance-data-table" style="width:100%">-->
+<!--                                        <thead>-->
+<!--                                            <tr class="table100-head">-->
+<!--                                                <th class="column1">Check In</th>-->
+<!--                                                <th class="column2">Check Out</th>-->
+<!--                                                <th class="column3">Worked Hours</th>-->
+<!--                                            </tr>-->
+<!--                                        </thead>-->
+<!--                                        <tbody>-->
+<!--                                            <tr t-foreach="state.attendances_data" t-as="attendance"-->
+<!--                                                t-key="attendance.id">-->
+<!--                                                <td><t t-esc="attendance.check_in"/></td>-->
+<!--                                                <td><t t-esc="attendance.check_out"/></td>-->
+<!--                                                <td><t t-esc="attendance.worked_hours"/></td>-->
+<!--                                            </tr>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                </div>-->
                             </div>
                             <div class="leave-requests box">
                                 <div class="title">Alerts</div>
@@ -261,11 +264,106 @@
                             </div>
                         </div>
                         <div style="padding-top:30px;"></div>
-                </div>
+                    </div>
 
             </section>
 
         </t>
+
+    <t t-name="odoo_custom_portal.LeaveRequestTable" owl="1">
+        <div style="position:relative">
+            <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;top:0;bottom:0;left:0;right:0;height: 200px;">
+                        <div class="lds-dual-ring"></div>
+            </div>
+
+            <div t-attf-style="display:{{loading.is_loading ? 'none':'block'}};background-color: #fff;border-radius: 10px;" class="downloads-tables">
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="state.leave_requests_data" t-as="leave_request"
+                            t-key="leave_request.id">
+
+                            <td><t t-if="leave_request.holiday_status_id" t-esc="leave_request.holiday_status_id[1]"/><t t-else="">    - </t></td>
+                            <td><t t-if="leave_request.date_from" t-esc="leave_request.date_from"/><t t-else="">    - </t></td>
+                            <td><t t-if="leave_request.date_to" t-esc="leave_request.date_to"/><t t-else="">    - </t></td>
+                            <td><t t-if="leave_request.duration_display" t-esc="leave_request.duration_display"/><t t-else="">    - </t></td>
+                            <td><t t-if="leave_request.state" t-esc="leave_request.state"/><t t-else="">    - </t></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="padding: 10px; display:flex;justify-content:end;width:100%;">
+                    <div style="display:flex;justify-content:center;align-items:center;">
+                        <p style="margin:0;font-weight:700;margin-right: 15px;"><span t-esc="(state.items_per_page*(state.current_page-1))+1"/><span> - </span><span t-esc="(state.items_per_page*(state.current_page))"/><span style="margin:0px 10px;">/</span><span t-esc="state.leave_requests_count"/></p>
+                    </div>
+
+                    <div class="pagination-tabs">
+                        <div t-attf-style="opacity:{{(state.current_page > 1) ? 1 : 0.5}}" class="pagination-button" t-on-click="backButton">
+                            <span><i class='fa fa-chevron-left'></i></span>
+                        </div>
+                        <div t-attf-style="opacity:{{(state.leave_requests_count > state.items_per_page*state.current_page) ? 1: 0.5}};" class="pagination-button" t-on-click="nextButton">
+                            <span><i class='fa fa-chevron-right'></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </t>
+    <t t-name="odoo_custom_portal.AttendanceTable" owl="1">
+        <div style="position:relative">
+            <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;top:0;bottom:0;left:0;right:0;height: 200px;">
+                        <div class="lds-dual-ring"></div>
+            </div>
+
+            <div t-attf-style="display:{{loading.is_loading ? 'none':'block'}};background-color: #fff;border-radius: 10px;" class="downloads-tables">
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+
+                            <th>Check In</th>
+                            <th>Check Out</th>
+                            <th>Worked Hours</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="state.attendances_data" t-as="attendance"
+                            t-key="attendance.id">
+                            <td><t t-if="attendance.check_in" t-esc="attendance.check_in"/><t t-else="">    - </t></td>
+                            <td><t t-if="attendance.check_out" t-esc="attendance.check_out"/><t t-else="">    - </t></td>
+                            <td><t t-if="attendance.worked_hours" t-esc="timeResource(attendance.worked_hours)"/><t t-else="">    - </t></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="padding: 10px; display:flex;justify-content:end;width:100%;">
+
+                    <div style="display:flex;justify-content:center;align-items:center;">
+                        <p style="margin:0;font-weight:700;margin-right: 15px;"><span t-esc="(state.items_per_page*(state.current_page-1))+1"/><span> - </span><span t-esc="(state.items_per_page*(state.current_page))"/><span style="margin:0px 10px;">/</span><span t-esc="state.attendances_count"/></p>
+                    </div>
+
+                    <div class="pagination-tabs">
+                        <div t-attf-style="opacity:{{(state.current_page > 1) ? 1 : 0.5}}" class="pagination-button" t-on-click="backButton">
+                            <span><i class='fa fa-chevron-left'></i></span>
+                        </div>
+                        <div t-attf-style="opacity:{{(state.attendances_count > state.items_per_page*state.current_page) ? 1: 0.5}};" class="pagination-button" t-on-click="nextButton">
+                            <span><i class='fa fa-chevron-right'></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </t>
 
         </templates>
 
