@@ -21,7 +21,7 @@
                          t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;height:100vh;width:100%">
                         <div class="lds-dual-ring"></div>
                     </div>
-                    <div t-if="state.popup_active" style="height: 100vh;width: 100%;position: relative;">
+                    <div t-if="state.popup_active" style="height: 100vh;width: 100%;position: absolute;">
                         <div style="position: fixed;z-index: 1000;top: 0;bottom: 0;left: 0;right: 0;background: rgba(0, 0, 0, 0.7);transition: opacity 500ms;">
                             <div style=" margin: 8rem auto;max-width: 700px;position: relative;transition: all 5s ease-in-out;">
                                 <div style="padding: 20px;background: #fff;border-radius: 5px;margin:0px 15px;">
@@ -67,33 +67,52 @@
                         </div>
                     </div>
                     <div t-attf-style="display:{{loading.is_loading ? 'none':'block'}}" class="home-content">
-                        <div style="height: 100%;align-content: flex-start;padding: 20px 20px;border-radius: 12px;" class="leave-balance-data">
-                            <div class="title">Warnings &amp; Notices</div>
-                            <div style="display: flex;flex-flow: row wrap;">
-                                <div t-foreach="state.warnings_data" t-as="warning" t-key="warning.id" class="news-letter-tab" t-on-click="()=>enablePopUp(warning)">
+                        <div style="" class="alert-container">
+                            <div class="title">Newsletter</div>
+                            <div t-if="state.circulars_data.length>0" class="alert-tab-container">
+                                <div class="alert-tab-container-inside">
+                                <t>
+                                <div t-foreach="state.circulars_data" t-as="circular" t-key="circular.id" class="news-letter-tab" t-on-click="()=>enablePopUp(circular)">
                                 <div style="display:flex; justify-content:space-between;">
-                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;"><t t-esc="warning.name"/></span>
-                                    <div t-attf-style="padding:2px 8px;border-radius:4px;background-color:{{warning.type == 'Warning' ? '#FF4343' : '#92d2a1'}}">
-                                        <span style="font-size: 1rem;font-weight: 600;margin:0;color: black;" t-esc="warning.type"/>
+                                    <span style="color: black;font-weight: 600;font-size: 1.2rem;"><t t-esc="circular.name"/></span>
+                                    <div t-attf-style="padding:2px 8px;border-radius:4px;background-color:{{circular.type == 'Newsletter' ? '#FF4343' : '#92d2a1'}}">
+                                        <span style="font-size: 1rem;font-weight: 600;margin:0;color: black;" t-esc="circular.type"/>
                                     </div>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;">
                                     <div style="">
                                         <div>
-                                            <i class="fa fa-chevron-right"></i><span style="font-size: 1.1rem;font-weight: 500;margin:0 0 0 4px;"><t t-esc="warning.type_id[1]"/></span>
+                                            <i class="fa fa-chevron-right" style="color: #aa9828;"></i><span style="font-size: 1.1rem;font-weight: 500;margin:0 0 0 4px;"><t t-esc="circular.type_id[1]"/></span>
                                         </div>
                                         <div>
-                                            <i class="fa fa-building-o"></i><span style="font-size: 1.1rem;font-weight: 500;margin:0 0 0 4px;"><t t-esc="warning.department_id[1]"/></span>
+                                            <i class="fa fa-building-o" style="color: #aa9828;"></i><span style="font-size: 1.1rem;font-weight: 500;margin:0 0 0 4px;"><t t-esc="circular.department_id[1]"/></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                                <div style="flex: 1 1 auto;width: 250px; padding: 0.6rem 1.5rem;margin: 0.3rem;"></div>
-                                <div style="flex: 1 1 auto;width: 250px; padding: 0.6rem 1.5rem;margin: 0.3rem;"></div>
-                                <div style="flex: 1 1 auto;width: 250px; padding: 0.6rem 1.5rem;margin: 0.3rem;"></div>
-                                <div style="flex: 1 1 auto;width: 250px; padding: 0.6rem 1.5rem;margin: 0.3rem;"></div>
-
+                                <div style="flex: 1 1 auto;width: 250px; padding: 0rem 1.5rem;margin: 0rem 0.3rem;"></div>
+                                <div style="flex: 1 1 auto;width: 250px; padding: 0rem 1.5rem;margin: 0rem 0.3rem;"></div>
+                                <div style="flex: 1 1 auto;width: 250px; padding: 0rem 1.5rem;margin: 0rem 0.3rem;"></div>
+                                <div style="flex: 1 1 auto;width: 250px; padding: 0rem 1.5rem;margin: 0rem 0.3rem;"></div>
+                            </t>
+                                </div>
+                                <div style="padding: 10px; display:flex;justify-content:end;width:100%;">
+                                <div style="display:flex;justify-content:center;align-items:center;">
+                                    <p style="margin:0;font-weight:700;margin-right: 15px;"><span t-esc="(state.items_per_page*(state.current_page-1))+1"/><span> - </span><span t-esc="(state.items_per_page*(state.current_page))"/><span style="margin:0px 10px;">/</span><span t-esc="state.circulars_count"/></p>
+                                </div>
+                                <div class="pagination-tabs">
+                                <div t-attf-style="opacity:{{(state.current_page > 1) ? 1 : 0.5}}" class="pagination-button" t-on-click="backButton">
+                                    <span><i class='fa fa-chevron-left'></i></span>
+                                </div>
+                                <div t-attf-style="opacity:{{(state.warnings_count > state.items_per_page*state.current_page) ? 1: 0.5}};" class="pagination-button" t-on-click="nextButton">
+                                    <span><i class='fa fa-chevron-right'></i></span>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+                            <div t-else="" style="display: flex;justify-content:center;margin-top:60px;">
+                                <img style="opacity: 0.2;width:90%;max-width:470px;" src="/odoo_custom_portal/static/src/img/no-data.png" alt=""/>
                             </div>
 
                         </div>

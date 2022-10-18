@@ -40,6 +40,7 @@
             'odoo_custom_portal/static/src/js/MyProfile/MyProfile.xml',
             'odoo_custom_portal/static/src/js/MyShifts/MyShifts.xml',
             'odoo_custom_portal/static/src/js/Newsletter/Newsletter.xml',
+            'odoo_custom_portal/static/src/js/Requests/Requests.xml',
         ],
         'odoo_custom_portal.webclient': [
             ('include', 'web.assets_backend'),
@@ -61,6 +62,7 @@
             'odoo_custom_portal/static/src/js/MyProfile/MyProfile.scss',
             'odoo_custom_portal/static/src/js/MyShifts/MyShifts.scss',
             'odoo_custom_portal/static/src/js/Newsletter/Newsletter.scss',
+            'odoo_custom_portal/static/src/js/Requests/Requests.scss',
             'web/static/src/legacy/js/public/public_widget.js',
             # 'portal/static/src/js/portal_chatter.js',
             # 'portal/static/src/js/portal_composer.js',
@@ -76,6 +78,7 @@
             'odoo_custom_portal/static/src/js/MyProfile/MyProfile.js',
             'odoo_custom_portal/static/src/js/MyShifts/MyShifts.js',
             'odoo_custom_portal/static/src/js/Newsletter/Newsletter.js',
+            'odoo_custom_portal/static/src/js/Requests/Requests.js',
             # 'odoo_custom_portal/static/src/js/home.js',
 
             'web/static/src/start.js',

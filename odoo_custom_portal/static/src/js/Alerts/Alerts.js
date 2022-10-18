@@ -18,7 +18,12 @@ export class Alerts extends Component {
         this.notificationService = useService("notification");
 
         this.state = useState({
-            employee_data: {},
+            warnings_data: [],
+            warnings_count:0,
+            current_page: 1,
+            items_per_page: 10,
+            popup_active: false,
+            popup_active_data: false
         })
 
         this.loading = useState({
@@ -28,23 +33,36 @@ export class Alerts extends Component {
 
         useEffect(
             () => {
-                // this.loading.is_loading = true
-                // this.getDataUpdateState().then((data) => {
-                //     this.loading.is_loading=false
-                //     if (data.length > 0) {
-                //         this.state.employee_data = data[0].employee_data
-                //     }
-                // })
+                this.loading.is_loading = true
+                this.getDataUpdateState(this.state.current_page, this.state.items_per_page).then((data) => {
+                    this.loading.is_loading = false
+                    if (data.length > 0) {
+                        this.state.warnings_data = data[0].warnings_data
+                        this.state.warnings_count = data[0].warnings_count
+                    }
+                })
             },
             () => []
         );
     }
 
-    getDataUpdateState = async (part_id) => {
+    getDataUpdateState = async (page_number, items_per_page) => {
 
-        let data = await this.rpcService(`/odoo_custom_portal/dashboard_data`);
-        // console.log(data)
+        let data = await this.rpcService(`/odoo_custom_portal/warnings`, {
+            page_number: page_number,
+            items_per_page: items_per_page
+        });
+        console.log(data)
         return data
+    }
+
+    enablePopUp = (notice) => {
+        this.state.popup_active = true
+        this.state.popup_active_data = notice
+    }
+    disablePopUp = (notice) => {
+        this.state.popup_active = false
+        this.state.popup_active_data = false
     }
 
 

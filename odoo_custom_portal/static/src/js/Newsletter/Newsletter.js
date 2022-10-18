@@ -18,7 +18,8 @@ export class Newsletter extends Component {
         this.notificationService = useService("notification");
 
         this.state = useState({
-            warnings_data: [],
+            circulars_data: [],
+            circulars_count:0,
             current_page: 1,
             items_per_page: 10,
             popup_active: false,
@@ -36,7 +37,8 @@ export class Newsletter extends Component {
                 this.getDataUpdateState(this.state.current_page, this.state.items_per_page).then((data) => {
                     this.loading.is_loading = false
                     if (data.length > 0) {
-                        this.state.warnings_data = data[0].warnings_data
+                        this.state.circulars_data = data[0].circulars_data
+                        this.state.circulars_count = data[0].circulars_count
                     }
                 })
             },
@@ -46,7 +48,7 @@ export class Newsletter extends Component {
 
     getDataUpdateState = async (page_number, items_per_page) => {
 
-        let data = await this.rpcService(`/odoo_custom_portal/warnings`, {
+        let data = await this.rpcService(`/odoo_custom_portal/newsletter`, {
             page_number: page_number,
             items_per_page: items_per_page
         });

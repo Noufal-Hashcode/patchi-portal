@@ -18,7 +18,7 @@
                     </div>
                 </nav>
                     <div class="home-content">
-                        <div style="padding: 0 20px;margin-top: 42px;">
+                        <div style="" class="shift-container-main">
                             <div class="title">My Shifts</div>
                             <div class="shift-container">
                                 <iframe width="100%" height="280px" frameborder="0" t-attf-src="/my/shift-gannt-view"/>
