@@ -89,7 +89,7 @@
 }
 
 .sidebar .nav-links li .nav-link-div:hover {
-    border-left: 5px solid #f8ce46;
+    border-left: 5px solid #aa9828;
     background-color: #2b2a26;
 }
 
@@ -178,7 +178,7 @@ nav .sidebar-button i {
     margin: 8px;
     border-radius: 50%;
     border: 6px solid #fff;
-    border-color: black transparent #fbe77f transparent;
+    border-color: black transparent #aa9828 transparent;
     animation: lds-dual-ring 1.2s linear infinite;
 }
 
@@ -317,15 +317,7 @@ nav .sidebar-button i {
 }
 
 @media (max-width: 700px) {
-    /*nav .profile-details .admin_name,*/
-    /*nav .profile-details i {*/
-    /*    display: none;*/
-    /*}*/
 
-    /*.home-section nav .profile-details {*/
-    /*    height: 50px;*/
-    /*    min-width: 40px;*/
-    /*}*/
 
 }
 

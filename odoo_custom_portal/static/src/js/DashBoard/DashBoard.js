@@ -106,7 +106,7 @@ export class LeaveRequestTable extends Component {
             leave_requests_data: {},
             leave_requests_count: 0,
             current_page: 1,
-            items_per_page: 2,
+            items_per_page: 6,
         })
 
         this.loading = useState({
@@ -169,7 +169,7 @@ export class AttendanceTable extends Component {
             attendances_data: {},
             attendances_count: 0,
             current_page: 1,
-            items_per_page: 4,
+            items_per_page: 6,
         })
 
         this.loading = useState({
@@ -238,7 +238,7 @@ export class DashBoardAlerts extends Component {
             warnings_data: [],
             warnings_count:0,
             current_page: 1,
-            items_per_page: 3,
+            items_per_page: 6,
             popup_active: false,
             popup_active_data: false
         })
@@ -264,7 +264,7 @@ export class DashBoardAlerts extends Component {
     }
 
     getDataUpdateState = async (page_number, items_per_page) => {
-
+        console.log(page_number + ' ' + items_per_page )
         let data = await this.rpcService(`/odoo_custom_portal/warnings`, {
             page_number: page_number,
             items_per_page: items_per_page

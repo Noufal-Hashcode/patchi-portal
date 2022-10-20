@@ -10,7 +10,7 @@
     'description': """  """,
     'depends': [
         'base',
-        'mail', 'portal', 'project', 'hr_timesheet',
+        'mail', 'portal', 'project', 'hr_timesheet','hr_expense',
     ],
     'data': [
         'views/header_template.xml',

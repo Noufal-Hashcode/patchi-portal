@@ -8,7 +8,7 @@
   }
 
   .shift-container-main {
-    padding: 20px 10px;
+    padding: 20px 20px;
 
     .shift-container {
       overflow-x: auto;
@@ -21,5 +21,9 @@
 
       }
     }
+         @media (max-width: 450px) {
+        padding: 20px 10px;
+
+      }
   }
 }

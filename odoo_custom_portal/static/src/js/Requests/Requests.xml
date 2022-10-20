@@ -12,9 +12,7 @@
                         <span class="dashboard">Requests</span>
                     </div>
                     <div class="profile-details">
-                        <!--<img src="images/profile.jpg" alt="">-->
-                        <span class="admin_name"></span>
-                        <i class='bx bx-chevron-down'></i>
+                        <img class="logo-navbar" src="/odoo_custom_portal/static/src/img/logo-large.jpg" alt=""/>
                     </div>
                 </nav>
 

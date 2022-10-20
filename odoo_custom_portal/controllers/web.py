@@ -131,6 +131,18 @@ class PortalHomePage(CustomerPortal):
                 'worked_hours': attendance.worked_hours
             })
 
+        def leave_request_colors(state):
+            if state == 'draft':
+                return {'background': '#8acfda'}
+            elif state == 'confirm':
+                return {'background': '#ffd57f'}
+            elif state == 'refuse':
+                return {'background': '#e8e8e8'}
+            elif state == 'validate':
+                return {'background': '#93d3a2'}
+            elif state == 'validate1':
+                return {'background': '#ffd57f'}
+
         for leave_request in leave_requests:
             print(dict(leave_request._fields['state'].selection)[leave_request.state])
             leave_requests_data.append({
@@ -140,7 +152,8 @@ class PortalHomePage(CustomerPortal):
                 'date_from': leave_request.date_from,
                 'date_to': leave_request.date_to,
                 'duration_display': leave_request.duration_display,
-                'state': dict(leave_request._fields['state'].selection)[leave_request.state]
+                'state': dict(leave_request._fields['state'].selection)[leave_request.state],
+                'state_colors': leave_request_colors(leave_request.state)
             })
 
         return [{'employee_data': employee_data, 'attendances_data': attendances_data,
@@ -253,6 +266,18 @@ class PortalHomePage(CustomerPortal):
         payslips_data = []
         employee_data = {}
 
+        def payslip_state_colors(state):
+            if state == 'draft':
+                return {'background': '#8bd0db'}
+            elif state == 'verify':
+                return {'background': '#fed47e'}
+            elif state == 'done':
+                return {'background': '#92d2a1'}
+            elif state == 'paid':
+                return {'background': '#92d2a1'}
+            elif state == 'cancel':
+                return {'background': '#e8e8e8'}
+
         if len(employee) == 1:
             employee_data = {
                 'id': employee.id,
@@ -291,7 +316,9 @@ class PortalHomePage(CustomerPortal):
                 'date_to': payslip.date_to,
                 'net_wage': payslip.net_wage,
                 'basic_wage': payslip.basic_wage,
-                'state': dict(payslip._fields['state'].selection)[payslip.state]
+                'state': dict(payslip._fields['state'].selection)[payslip.state],
+                'state_colors': payslip_state_colors(payslip.state)
+
             })
 
         return [{'payslips_data': payslips_data, 'payslips_count': payslips_count, 'employee_data': employee_data, }]
@@ -354,31 +381,40 @@ class PortalHomePage(CustomerPortal):
         employee_id = request.env.user.employee_id.id
         employee = request.env['hr.employee'].sudo().browse(employee_id)
         # ('employee_id', '=', employee_id)
-        warnings_count = request.env['hc.warning'].sudo().search_count([])
-        warnings = request.env['hc.warning'].sudo().search([],
+        warnings_types = request.env['hc.warning.type'].sudo().search(
+            ['|', ('type', '=', 'warning'), ('type', '=', 'notice')], )
+        domain = []
+        for warning_type in warnings_types:
+            domain.append(warning_type.id)
+        print(tuple(domain))
+
+        warnings_count = request.env['hc.warning'].sudo().search_count([('type_id', 'in', tuple(domain))])
+        warnings = request.env['hc.warning'].sudo().search([('type_id', 'in', tuple(domain))],
                                                            limit=items_per_page,
                                                            order='id DESC', offset=(page_number - 1) * items_per_page)
+        print(warnings_count)
+        print(warnings)
         # '&', ('type', '=', 'warning'), ('type', '=', 'notice'),]
         warnings_data = []
 
         for warning in warnings:
             # print(dict(leave_request._fields['state'].selection)[leave_request.state])
-            if warning.type_id.type == 'warning' or warning.type_id.type == 'notice':
-                warnings_data.append({
-                    'id': warning.id,
-                    'name': warning.name,
-                    'employee_id': [warning.employee_id.id,
-                                    warning.employee_id.name] if warning.employee_id else False,
-                    'department_id': [warning.department_id.id,
-                                      warning.department_id.name] if warning.department_id else False,
-                    'type_id': [warning.type_id.id,
-                                warning.type_id.name] if warning.type_id else False,
-                    'type': dict(warning.type_id._fields['type'].selection)[warning.type_id.type],
-                    'attachment_ids': [
-                        {'id': attachment.id, 'local_url': attachment.local_url, 'display_name': attachment.display_name,
-                         'website_url': attachment.website_url} for attachment in warning.attachment_ids]
-                })
-                print(warning.attachment_ids)
+            # if warning.type_id.type == 'warning' or warning.type_id.type == 'notice':
+            warnings_data.append({
+                'id': warning.id,
+                'name': warning.name,
+                'employee_id': [warning.employee_id.id,
+                                warning.employee_id.name] if warning.employee_id else False,
+                'department_id': [warning.department_id.id,
+                                  warning.department_id.name] if warning.department_id else False,
+                'type_id': [warning.type_id.id,
+                            warning.type_id.name] if warning.type_id else False,
+                'type': dict(warning.type_id._fields['type'].selection)[warning.type_id.type],
+                'attachment_ids': [
+                    {'id': attachment.id, 'local_url': attachment.local_url, 'display_name': attachment.display_name,
+                     'website_url': attachment.website_url} for attachment in warning.attachment_ids]
+            })
+            print(warning.attachment_ids)
 
         return [{'warnings_data': warnings_data, 'warnings_count': warnings_count, }]
 
@@ -387,10 +423,17 @@ class PortalHomePage(CustomerPortal):
 
         employee_id = request.env.user.employee_id.id
         employee = request.env['hr.employee'].sudo().browse(employee_id)
-        # ('employee_id', '=', employee_id)
-        circulars_count = request.env['hc.warning'].sudo().search_count([])
-        # circulars = request.env['hc.warning.type'].sudo().search([])
-        circulars = request.env['hc.warning'].sudo().search([], limit=items_per_page,
+
+        warnings_types = request.env['hc.warning.type'].sudo().search(
+            [('type', '=', 'circular')], )
+        domain = []
+        for warning_type in warnings_types:
+            domain.append(warning_type.id)
+        print(tuple(domain))
+
+        circulars_count = request.env['hc.warning'].sudo().search_count([('type_id', 'in', tuple(domain))])
+        circulars = request.env['hc.warning'].sudo().search([('type_id', 'in', tuple(domain))],
+                                                            limit=items_per_page,
                                                             order='id DESC', offset=(page_number - 1) * items_per_page)
         circulars_data = []
 

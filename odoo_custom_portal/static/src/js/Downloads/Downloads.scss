@@ -64,21 +64,25 @@
       .data-table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: 500;
         min-width: 400px;
         border-radius: 5px 5px 0 0;
         overflow: hidden;
 
         thead tr {
-          background-color: #ffffff;
-          color: #535353;
+          background-color: #dddddd;
+          color: #000000;
           text-align: left;
-          font-weight: bold;
-          border-bottom: 1px solid #dddddd;
+          font-weight: 600;
+          //border-bottom: 1px solid #dddddd;
         }
 
-        th, td {
+        thead th {
+          padding: 12px 15px;
+          color: #000000;
+        }
+        td {
           padding: 12px 15px;
         }
 
