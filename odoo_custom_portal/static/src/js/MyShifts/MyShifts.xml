@@ -12,13 +12,11 @@
                         <span class="dashboard">My Shifts</span>
                     </div>
                     <div class="profile-details">
-                        <!--<img src="images/profile.jpg" alt="">-->
-                        <span class="admin_name"></span>
-                        <i class='bx bx-chevron-down'></i>
+                        <img class="logo-navbar" src="/odoo_custom_portal/static/src/img/logo-large.jpg" alt=""/>
                     </div>
                 </nav>
                     <div class="home-content">
-                        <div style="padding: 0 20px;margin-top: 42px;">
+                        <div style="" class="shift-container-main">
                             <div class="title">My Shifts</div>
                             <div class="shift-container">
                                 <iframe width="100%" height="280px" frameborder="0" t-attf-src="/my/shift-gannt-view"/>

@@ -12,9 +12,7 @@
                         <span class="dashboard">Downloads</span>
                     </div>
                     <div class="profile-details">
-                        <!--<img src="images/profile.jpg" alt="">-->
-                        <span class="admin_name"></span>
-                        <i class='bx bx-chevron-down'></i>
+                        <img class="logo-navbar" src="/odoo_custom_portal/static/src/img/logo-large.jpg" alt=""/>
                     </div>
                 </nav>
 
@@ -35,8 +33,8 @@
                             <div class="user-details-box" style="">
                             <div class="employee-icon-section">
                                 <div class="icon-container">
-                                    <img t-if="state.employee_data.id" style="width:100px;,height:100px"
-                                         class="img rounded-circle"
+                                    <img t-if="state.employee_data.id" style=""
+                                         class="img rounded-circle profile-icon"
                                          t-attf-src="/portal/web/image?model=hr.employee.public&amp;field=avatar_128&amp;id={{state.employee_data.id}}"/>
                                 </div>
                                 <div class="employee-name-box" style="width:100%">
@@ -62,29 +60,29 @@
 
                                         </tr>
                                         <tr>
-                                           <td>Working Hours <span class="employee-data"><t t-if="state.employee_data.resource_calendar_id" t-esc="state.employee_data.resource_calendar_id[1]"/></span></td>
+                                           <td>Working Hours - <span class="employee-data"><t t-if="state.employee_data.resource_calendar_id" t-esc="state.employee_data.resource_calendar_id[1]"/></span></td>
                                         </tr>
                                     </table>
                                     <table class="employee-details-table-small">
                                         <tr>
-                                            <td>Current Contract <span class="employee-data"><t t-if="state.employee_data.contract_id" t-esc="state.employee_data.contract_id[1]"/>
+                                            <td>Current Contract - <span class="employee-data"><t t-if="state.employee_data.contract_id" t-esc="state.employee_data.contract_id[1]"/>
                                                 <t t-else=""> -</t></span></td>
                                         </tr>
                                         <tr>
-                                            <td>First Contact Date <span class="employee-data"><t t-if="state.employee_data.first_contract_date" t-esc="state.employee_data.first_contract_date"/>
+                                            <td>First Contact Date - <span class="employee-data"><t t-if="state.employee_data.first_contract_date" t-esc="state.employee_data.first_contract_date"/>
                                                 <t t-else=""> -</t></span></td>
 
                                         </tr>
                                         <tr>
-                                            <td>Working Hours <span class="employee-data"><t t-if="state.employee_data.resource_calendar_id" t-esc="state.employee_data.resource_calendar_id[1]"/>
+                                            <td>Working Hours - <span class="employee-data"><t t-if="state.employee_data.resource_calendar_id" t-esc="state.employee_data.resource_calendar_id[1]"/>
                                                 <t t-else=""> -</t></span></td>
                                         </tr>
                                         <tr class="department-small">
-                                            <td>Department <span class="employee-data"><t t-if="state.employee_data.department_id" t-esc="state.employee_data.department_id[1]"/>
+                                            <td>Department - <span class="employee-data"><t t-if="state.employee_data.department_id" t-esc="state.employee_data.department_id[1]"/>
                                                 <t t-else=""> -</t></span></td>
                                         </tr>
                                         <tr class="department-small">
-                                            <td>Employee Type <span class="employee-data"><t t-if="state.employee_data.employee_type" t-esc="state.employee_data.employee_type"/>
+                                            <td>Employee Type - <span class="employee-data"><t t-if="state.employee_data.employee_type" t-esc="state.employee_data.employee_type"/>
                                                 <t t-else=""> -</t></span></td>
                                         </tr>
 
@@ -92,12 +90,12 @@
                                     <div class="employee-details-department">
                                         <div>
                                             <h3 style="font-size:1.4rem;">Department</h3>
-                                            <p><t t-if="state.employee_data.department_id" t-esc="state.employee_data.department_id[1]"/>
+                                            <p style="font-weight: 500;"><t t-if="state.employee_data.department_id" t-esc="state.employee_data.department_id[1]"/>
                                                 <t t-else=""> -</t></p>
                                         </div>
                                         <div>
-                                            <h3 style="font-size:1.4rem;">Employee Type</h3>
-                                            <p><t t-if="state.employee_data.employee_type" t-esc="state.employee_data.employee_type"/>
+                                            <h3 style="font-size:1.4rem;white-space: nowrap">Employee Type</h3>
+                                            <p style="font-weight: 500;"><t t-if="state.employee_data.employee_type" t-esc="state.employee_data.employee_type"/>
                                                 <t t-else=""> -</t></p>
                                         </div>
                                     </div>
@@ -123,11 +121,7 @@
 
     <t t-name="odoo_custom_portal.DownloadsPaySlipTable" owl="1">
         <div style="position:relative">
-            <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;top:0;bottom:0;left:0;right:0;height: 200px;">
-                        <div class="lds-dual-ring"></div>
-            </div>
-
-            <div t-attf-style="display:{{loading.is_loading ? 'none':'block'}};background-color: #fff;border-radius: 10px;" class="downloads-tables">
+            <div t-attf-style="background-color: #fff;border-radius: 10px;" class="downloads-tables">
 
                 <table class="data-table">
                     <thead>
@@ -136,12 +130,12 @@
                                 <div class="checkbox-box-1"></div>
                             </th>
                             <th>Reference</th>
-                            <th>Structure</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Basic Wage</th>
-                            <th>Net Wage</th>
-                            <th>State</th>
+                            <th style="min-width:180px;" >Structure</th>
+                            <th style="width:150px;min-width:150px;text-align:center;">From</th>
+                            <th style="width:150px;min-width:150px;text-align:center;">To</th>
+                            <th style="width:120px;min-width:120px;text-align:right;">Basic Wage</th>
+                            <th style="width:120px;min-width:120px;text-align:right;">Net Wage</th>
+                            <th style="width:120px;text-align:right;">State</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -151,12 +145,12 @@
                                 <div class="checkbox-box-1"></div>
                             </td>
                             <td><t t-if="payslip.number" t-esc="payslip.number"/><t t-else="">    - </t></td>
-                            <td><t t-if="payslip.struct_id[1]" t-esc="payslip.struct_id[1]"/><t t-else="">    - </t></td>
-                            <td><t t-if="payslip.date_from" t-esc="payslip.date_from"/><t t-else="">    - </t></td>
-                            <td><t t-if="payslip.date_to" t-esc="payslip.date_to"/><t t-else="">    - </t></td>
-                            <td><t t-if="payslip.basic_wage" t-esc="payslip.basic_wage"/><t t-else="">    - </t></td>
-                            <td><t t-if="payslip.net_wage" t-esc="payslip.net_wage"/><t t-else="">   - </t></td>
-                            <td><t t-if="payslip.state" t-esc="payslip.state"/><t t-else="">   - </t></td>
+                            <td style="min-width:180px;"><t t-if="payslip.struct_id[1]" t-esc="payslip.struct_id[1]"/><t t-else="">    - </t></td>
+                            <td style="width:150px;min-width:150px;text-align:center;"><t t-if="payslip.date_from" t-esc="payslip.date_from"/><t t-else="">    - </t></td>
+                            <td style="width:150px;min-width:150px;text-align:center;"><t t-if="payslip.date_to" t-esc="payslip.date_to"/><t t-else="">    - </t></td>
+                            <td style="width:120px;min-width:120px;text-align:right;"><t t-if="payslip.basic_wage" t-esc="payslip.basic_wage"/><t t-else="">  - </t></td>
+                            <td style="width:120px;min-width:120px;text-align:right;"><t t-if="payslip.net_wage" t-esc="payslip.net_wage"/><t t-else="">  - </t></td>
+                            <td style="width:120px;text-align:right;"><span t-if="payslip.state" t-attf-style="padding: 4px 8px;border-radius: 14px;background-color:{{payslip.state_colors.background}};font-size: 11px;font-weight: 600;margin:0;color: black;white-space: nowrap" t-esc="payslip.state"/><span t-else="">    - </span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -178,6 +172,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;top:0;bottom:0;left:0;right:0;opacity:0.7;background-color:#fff">
+                        <div class="lds-dual-ring"></div>
             </div>
         </div>
 

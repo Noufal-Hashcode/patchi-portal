@@ -38,6 +38,8 @@
         margin: 0;
       }
     }
+
+
   }
 
   .downloads-tables-container {
@@ -46,11 +48,11 @@
     margin-top: 42px;
 
     .title {
-        position: relative;
-        font-size: 20px;
-        font-weight: 500;
-        color: #444B5A;
-        margin-bottom: 14px;
+      position: relative;
+      font-size: 20px;
+      font-weight: 500;
+      color: #444B5A;
+      margin-bottom: 14px;
     }
 
 
@@ -74,14 +76,14 @@
           background-color: #dddddd;
           color: #000000;
           text-align: left;
-          font-weight: 600;
-          //border-bottom: 1px solid #dddddd;
         }
 
         thead th {
           padding: 12px 15px;
           color: #000000;
+          font-weight: 600;
         }
+
         td {
           padding: 12px 15px;
         }
