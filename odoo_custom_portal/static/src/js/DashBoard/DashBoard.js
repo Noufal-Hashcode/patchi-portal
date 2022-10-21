@@ -29,7 +29,7 @@ export class DashBoard extends Component {
         })
 
         this.loading = useState({
-            is_loading: false,
+            is_loading: true,
         })
         this.barcode_line = useRef('shift_chart')
         this.canvasRef = useRef("canvas");

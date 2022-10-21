@@ -30,7 +30,7 @@ export class MyProfile extends Component {
         })
 
         this.loading = useState({
-            is_loading: false,
+            is_loading: true,
         })
 
 
