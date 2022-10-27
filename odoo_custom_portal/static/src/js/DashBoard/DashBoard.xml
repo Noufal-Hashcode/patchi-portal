@@ -5,7 +5,7 @@
     <t t-name="odoo_custom_portal.DashBoard" owl="1">
 
 
-                <div class="home-section" style="font-family:'Montserrat';">
+                <section class="home-section" style="font-family:'Montserrat';">
                 <nav>
                     <div class="sidebar-button">
                         <i class='fa fa-bars icon' t-on-click="props.onClickMenu"></i>
@@ -334,7 +334,7 @@
                         <div style="padding-top:30px;"></div>
                     </div>
 
-            </div>
+            </section>
 
         </t>
 

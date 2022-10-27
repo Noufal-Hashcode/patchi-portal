@@ -3,15 +3,15 @@
 <templates xml:space="preserve">
 
     <t t-name="odoo_custom_portal.MainPortal" owl="1">
-        <div style="height:100%;">
-            <div class="home-wrapper" style="overflow-x: hidden;">
+        <div style="height:100%;width: 100%;">
+            <div class="home-wrapper" style="width: 100%;height:100%;overflow-y: auto;overflow-x: hidden;">
             <div t-attf-class="sidebar {{main_menu.active ? 'active' : '' }}" style="font-family:'Montserrat';">
 
-<!--                <div style="position:relative;">-->
-<!--                    <div class="close_icon" style="">-->
-<!--                            <i class='fa fa-close' t-on-click="onClickMenu" style="color:#fff;font-size: 20px;"></i>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div style="position:relative;">
+                    <div class="close_icon" style="" t-on-click="onClickMenu">
+                            <i class='fa fa-close' style="color:#fff;font-size: 20px;"></i>
+                    </div>
+                </div>
 
                 <div class="logo-details">
 <!--                        <div class="user-icon"></div>-->
@@ -61,7 +61,7 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="nav-links" style="">
+                <ul class="nav-links" style="overflow-x: hidden;">
                     <li >
                         <a class="nav-link-div" href="/web/session/logout" t-attf-style ="">
                             <i class="fa fa-sign-out"/>
@@ -70,30 +70,29 @@
                     </li>
                 </ul>
             </div>
+            <div class="sidebar-layout-background"></div>
             <t t-if="main_menu.is_main_dashboard_visible">
-<!--                                <MyProfile onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>-->
-
                 <DashBoard onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
             </t>
             <t t-elif="main_menu.is_my_profile_visible">
-                <MyProfile onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+                <MyProfile onClickMenu="onClickMenu" />
             </t>
             <t t-elif="main_menu.is_requests_visible">
-                <Requests onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+                <Requests onClickMenu="onClickMenu" />
             </t>
             <t t-elif="main_menu.is_my_shifts_visible">
-                <MyShifts onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+                <MyShifts onClickMenu="onClickMenu" />
             </t>
             <t t-elif="main_menu.is_alerts_visible">
-                <Alerts onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+                <Alerts onClickMenu="onClickMenu" />
             </t>
             <t t-elif="main_menu.is_downloads_visible">
-                <Downloads onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+                <Downloads onClickMenu="onClickMenu" />
 <!--                <DashBoard onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>-->
 
             </t>
             <t t-elif="main_menu.is_newsletter_visible">
-                <Newsletter onClickMenu="onClickMenu" onClickShortCuts="onClickMainMenuItem"/>
+                <Newsletter onClickMenu="onClickMenu" />
             </t>
 
 
