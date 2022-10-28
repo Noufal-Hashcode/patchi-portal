@@ -34,7 +34,26 @@
                                         <div>
                                             <h2 style="font-size:1.8rem;font-weight:600;">Error</h2>
                                         </div>
-                                        <h3 style="font-size: 1.1rem;">Please check your inputs</h3>
+                                        <h3 style="font-size: 1.1rem;"><t t-esc="state.error_msg"/></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div t-if="state.successful_changes" style="height: 100vh;width: 100%;position: absolute;">
+                        <div style="position: fixed;z-index: 1000;top: 0;bottom: 0;left: 0;right: 0;background: rgba(0, 0, 0, 0.7);transition: opacity 500ms;">
+                            <div style=" margin: 8rem auto;max-width: 700px;position: relative;transition: all 5s ease-in-out;">
+                                <div style="padding: 20px;background: #fff;border-radius: 5px;margin:0px 15px;">
+                                    <div style="display:flex;justify-content:flex-end;">
+<!--                                        <div t-on-click="disablePopUp">-->
+<!--                                            <i class="fa fa-times"></i>-->
+<!--                                        </div>-->
+                                    </div>
+                                    <div style="overflow-x: auto;">
+                                        <div>
+                                            <h2 style="font-size:1.8rem;font-weight:600;">Successful</h2>
+                                        </div>
+                                        <h3 style="font-size: 1.1rem;">Please refresh the page and log in with your new credentials</h3>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +107,14 @@
                                         </div>
                                                     <div class="input-field">
                                             <label>Gender</label>
-                                                        <input type="text" placeholder="  -  " t-attf-value="{{state.employee_data.gender}}" disabled="disabled" />
+                                                        <select  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-change="(value) => changeMaritalState(value)">
+                                                            <option t-att-selected="state.employee_data.marital ? '' : 'selected'" disabled="disabled" ><t t-if="state.edit_enable" >Gender</t><t t-else="">  -  </t></option>
+                                                            <t t-if="Object.keys(state.employee_data).length >0">
+                                                                <option t-att-selected="state.employee_data.gender == status ? 'selected' : '' " t-foreach="Object.keys(state.employee_data.genders)" t-as="gender" t-key="gender" t-att-value="gender" >
+                                                                    <t t-esc="state.employee_data.genders[gender]"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
 
                                         </div>
 
@@ -304,10 +330,10 @@
                                             </div>
                                             <div style="text-align:center;margin: 24px 0px;" class="employee-name-box">
                                                 <div>
-                                                    <h2 style="font-weight: 600;font-size:1.3rem;">Mitchell Admin</h2>
+                                                    <h2 style="font-weight: 600;font-size:1.3rem;"><t t-esc="state.employee_data.name"/></h2>
                                                 </div>
                                                 <div>
-                                                    <h4 style="font-weight: 500;font-size:1rem;">Chief Executive Officer</h4>
+                                                    <h4 style="font-weight: 500;font-size:1rem;"><t t-esc="state.employee_data.job_title"/></h4>
                                                 </div>
                                             </div>
                                             <div class="profile-buttons-container" style="margin:18px 0px;">

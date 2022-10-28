@@ -19,7 +19,7 @@
                         <div style="" class="shift-container-main">
                             <div class="title">My Shifts</div>
                             <div class="shift-container">
-                                <iframe width="100%" height="280px" frameborder="0" t-attf-src="/my/shift-gannt-view"/>
+                                <iframe id="shifts-iframe" width="100%" height="280px" frameborder="0" t-attf-src="/my/shift-gannt-view"/>
                             </div>
 
                         </div>

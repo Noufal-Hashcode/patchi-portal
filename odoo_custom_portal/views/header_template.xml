@@ -9,14 +9,13 @@
         <field name="arch" type="xml">
             <xpath expr="/gantt" position="attributes">
                 <attribute name="js_class">shift_gannt_portal</attribute>
+<!--                <attribute name="form_view_id">false</attribute>-->
                 <attribute name="sample">0</attribute>
                 <attribute name="create">false</attribute>
                 <attribute name="cell_create">false</attribute>
                 <attribute name="edit">false</attribute>
                 <attribute name="plan">false</attribute>
                 <attribute name="edit">false</attribute>
-                <attribute name="string">false</attribute>
-
             </xpath>
         </field>
     </record>

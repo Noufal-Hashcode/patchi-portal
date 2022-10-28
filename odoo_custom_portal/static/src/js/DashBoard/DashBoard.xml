@@ -192,7 +192,7 @@
                                     </div>
                                 </div>
                             </div>
-                                <div class="box" t-on-click="()=>props.onClickShortCuts('newsletter')">
+                                <div class="box" >
                                 <div class="right-side">
                                     <div class="indicator">
                                         <i class="fa fa-calendar-times-o"/>
@@ -218,7 +218,7 @@
 <!--                                    <svg id="gantt"></svg>-->
 <!--                                    <svg class="gantt-selector"></svg>-->
                                 <div class="leave-balance-data">
-                                    <iframe width="100%" height="280px" frameborder="0" t-attf-src="/my/shift-gannt-view"/>
+                                    <iframe id="shifts-iframe" width="100%" height="280px" frameborder="0" t-attf-src="/my/shift-gannt-view"/>
                                 </div>
                             </div>
                         </div>

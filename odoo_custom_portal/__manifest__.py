@@ -13,8 +13,9 @@
         'mail', 'portal', 'project', 'hr_timesheet','hr_expense',
     ],
     'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'views/header_template.xml',
-
     ],
 
     'demo': [],
@@ -96,13 +97,13 @@
             # ('remove', 'web/static/src/webclient/menus/*.js'),
 
             # Remove Longpolling bus and packages needed this bus
-            ('remove', 'bus/static/src/js/services/assets_watchdog_service.js'),
-            ('remove', 'mail/static/src/services/messaging/messaging.js'),
-
-            ('remove', 'mail/static/src/components/dialog_manager/dialog_manager.js'),
-            ('remove', 'mail/static/src/services/dialog_service/dialog_service.js'),
-            ('remove', 'mail/static/src/components/chat_window_manager/chat_window_manager.js'),
-            ('remove', 'mail/static/src/services/chat_window_service/chat_window_service.js'),
+            # ('remove', 'bus/static/src/js/services/assets_watchdog_service.js'),
+            # ('remove', 'mail/static/src/services/messaging/messaging.js'),
+            #
+            # ('remove', 'mail/static/src/components/dialog_manager/dialog_manager.js'),
+            # ('remove', 'mail/static/src/services/dialog_service/dialog_service.js'),
+            # ('remove', 'mail/static/src/components/chat_window_manager/chat_window_manager.js'),
+            # ('remove', 'mail/static/src/services/chat_window_service/chat_window_service.js'),
             'odoo_custom_portal/static/src/fonts/fonts.scss',
             'odoo_custom_portal/static/src/js/StartShiftView/startWebClient.js',
             'odoo_custom_portal/static/src/js/StartShiftView/PortalShiftView.js',

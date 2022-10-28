@@ -192,6 +192,7 @@ class PortalHomePage(CustomerPortal):
                 'phone': employee.phone,
                 'children': employee.children,
                 'gender': employee.gender,
+                'genders':  dict(employee._fields['gender'].selection),
                 'marital': employee.marital,
                 'marital_statuses': dict(employee._fields['marital'].selection),
                 'emergency_contact': employee.emergency_contact,
@@ -230,6 +231,7 @@ class PortalHomePage(CustomerPortal):
                 employee_data = {
                     'birthday': saving_data['birthday'],
                     'marital': saving_data['marital'],
+                    'gender': saving_data['gender'],
                     'children': saving_data['children'],
                     'emergency_contact': saving_data['emergency_contact'],
                     'emergency_phone': saving_data['emergency_phone'],
@@ -334,7 +336,8 @@ class PortalHomePage(CustomerPortal):
                 raise
         return pay_slips_sudo
 
-    @route(["/my/payslips/pdf/download"], type='http', auth="public", website=True)
+#error check access
+    @route(["/my/payslips/pdf/download"], type='http', auth="user", website=True)
     def get_payroll_report_print(self, list_ids='', **post):
         if not list_ids or re.search("[^0-9|,]", list_ids):
             return request.not_found()

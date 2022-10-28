@@ -26,7 +26,9 @@ export class MyProfile extends Component {
             old_password: '',
             new_password: '',
             confirm_password: '',
-            error_display:false
+            error_display:false,
+            error_msg:'Please check your inputs',
+            successful_changes:false
         })
 
         this.loading = useState({
@@ -66,12 +68,14 @@ export class MyProfile extends Component {
     changeTab = (page_number) => {
         this.state.current_page = page_number
     }
-    enablePopUp = (notice) => {
-        this.state.error_display = true
-
-    }
+    // enablePopUp = (notice) => {
+    //     this.state.error_display = true
+    //
+    // }
     disablePopUp = (notice) => {
         this.state.error_display = false
+        this.state.successful_changes = false
+        this.state.error_msg= 'Please check your inputs'
 
     }
 
@@ -95,6 +99,9 @@ export class MyProfile extends Component {
         this.state.employee_data.address_home_id.state_id = state_id
     }
     changeMaritalState = (e) => {
+        this.state.employee_data.gender = e.target.value
+    }
+    changeGender = (e) => {
         this.state.employee_data.marital = e.target.value
     }
     changePassword = async () => {
@@ -105,10 +112,17 @@ export class MyProfile extends Component {
         }
 
         let data = await this.rpcService(`/portal/web/session/change_password`, {fields: fields});
+        console.log(data)
         if(data.new_password){
+            this.state.successful_changes =true
+
 
         }else{
             this.state.error_display =true
+            if(data.error){
+                this.state.error_msg = data.error
+            }
+
         }
     }
 
@@ -193,6 +207,7 @@ export class MyProfile extends Component {
                 phone: employee_data.phone,
                 birthday: employee_data.birthday,
                 marital: employee_data.marital,
+                gender:employee_data.gender,
                 children: employee_data.children,
                 emergency_contact: employee_data.emergency_contact,
                 emergency_phone: employee_data.emergency_phone,
