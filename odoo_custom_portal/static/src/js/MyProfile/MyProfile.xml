@@ -108,9 +108,9 @@
                                                     <div class="input-field">
                                             <label>Gender</label>
                                                         <select  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-change="(value) => changeMaritalState(value)">
-                                                            <option t-att-selected="state.employee_data.marital ? '' : 'selected'" disabled="disabled" ><t t-if="state.edit_enable" >Gender</t><t t-else="">  -  </t></option>
+                                                            <option t-att-selected="state.employee_data.gender ? '' : 'selected'" ><t t-if="state.edit_enable" ></t><t t-else="">  -  </t></option>
                                                             <t t-if="Object.keys(state.employee_data).length >0">
-                                                                <option t-att-selected="state.employee_data.gender == status ? 'selected' : '' " t-foreach="Object.keys(state.employee_data.genders)" t-as="gender" t-key="gender" t-att-value="gender" >
+                                                                <option t-att-selected="state.employee_data.gender == gender ? 'selected' : '' " t-foreach="Object.keys(state.employee_data.genders)" t-as="gender" t-key="gender" t-att-value="gender" >
                                                                     <t t-esc="state.employee_data.genders[gender]"/>
                                                                 </option>
                                                             </t>

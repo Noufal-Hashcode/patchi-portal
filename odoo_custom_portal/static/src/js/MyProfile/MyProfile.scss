@@ -47,6 +47,7 @@
       background-color:#aa9828 ;
       border-radius: 4px;
       padding: 4px 12px;
+      transition: all 0.4s ease;
 
       h2{
         color: #fff;
@@ -163,8 +164,10 @@
       @media (max-width: 550px) {
         width: 100%;
       }
-
-
+    }
+    .profile-buttons:hover{
+      background-color: #aa9828 ;
+      transition: all 0.4s ease;
     }
   }
 
@@ -212,6 +215,7 @@
   button {
     &:hover {
       background-color: #265df2;
+      transition: all 0.4s ease;
     }
   }
 

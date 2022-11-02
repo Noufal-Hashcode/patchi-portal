@@ -136,8 +136,15 @@
 <!--                            </div>-->
 <!--                                </div>-->
                 </div>
-                <div t-else="" style="display: flex;justify-content:center;margin-top:60px;">
-                    <img style="opacity: 0.2;width:90%;max-width:470px;" src="/odoo_custom_portal/static/src/img/no-data.png" alt=""/>
+                <div t-else=""  t-attf-style="background-color: #fff;border-radius: 10px;height: 100%;" class="alert-tab-container">
+                    <div style="">
+                        <div style="display: flex;justify-content:center;margin: 15px 0px;">
+                            <i class="fa fa-search" style="font-size:50px;color: #c5c5c5;"></i>
+                        </div>
+                        <div style="display: flex;justify-content:center;">
+                            <h1 style="font-size: 1.2rem;color: #c5c5c5;">No results</h1>
+                        </div>
+                    </div>
                 </div>
             </div>
             </div>

@@ -54,6 +54,7 @@ export class MyProfile extends Component {
 
                 } else {
                     this.getDataUpdateState().then((data) => {
+                        console.log(data)
                         this.loading.is_loading = false
                         if (data.length > 0) {
                             this.state.employee_data = data[0].employee_data

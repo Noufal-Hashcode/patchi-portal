@@ -121,6 +121,7 @@
 
     <t t-name="odoo_custom_portal.DownloadsPaySlipTable" owl="1">
         <div style="position:relative">
+            <t t-if="state.payslips_data.length>0">
             <div t-attf-style="background-color: #fff;border-radius: 10px;" class="downloads-tables">
 
                 <table class="data-table">
@@ -176,6 +177,18 @@
             <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;top:0;bottom:0;left:0;right:0;opacity:0.7;background-color:#fff">
                         <div class="lds-dual-ring"></div>
             </div>
+            </t>
+
+            <div t-else=""  t-attf-style="background-color: #fff;border-radius: 10px;height: 100%;" class="downloads-tables">
+                    <div style="">
+                        <div style="display: flex;justify-content:center;margin: 15px 0px;">
+                            <i class="fa fa-search" style="font-size:50px;color: #c5c5c5;"></i>
+                        </div>
+                        <div style="display: flex;justify-content:center;">
+                            <h1 style="font-size: 1.2rem;color: #c5c5c5;">No results</h1>
+                        </div>
+                    </div>
+                </div>
         </div>
 
     </t>

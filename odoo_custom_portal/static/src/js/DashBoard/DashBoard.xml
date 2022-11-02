@@ -230,7 +230,7 @@
                                     <div class="title">Leave Balances</div>
 <!--                                    <div style="position: absolute;left: 0;bottom: -2px;height: 3px;width: 27px;border-radius: 8px;background-color: #4070f4;"></div>-->
                                 </div>
-                                <div class="leave-balance-data" style="display: flex;flex-flow: row wrap;height: 100%;align-content: flex-start;">
+                                <div t-if="state.leave_balances_data.length>0" class="leave-balance-data" style="display: flex;flex-flow: row wrap;height: 100%;align-content: flex-start;">
                                         <div t-foreach="state.leave_balances_data" t-as="leave"
                                                 t-key="leave[3]" class="leave-balances-tab">
                                             <div style="display:flex; justify-content:space-between;">
@@ -259,6 +259,19 @@
                                     <div style="flex: 1 1 auto;width: 290px; margin: 0rem 0.3rem;padding: 0rem 1.5rem;"/>
                                     <div style="flex: 1 1 auto;width: 290px; margin: 0rem 0.3rem;padding: 0rem 1.5rem;"/>
                                 </div>
+                                <div t-else=""  t-attf-style="background-color: #fff;border-radius: 10px;height: 100%;" class="downloads-tables">
+                                      <div style="">
+                                               <div style="display: flex;justify-content:center;margin: 15px 0px;">
+                                                   <i class="fa fa-search" style="font-size:50px;color: #c5c5c5;"></i>
+                                               </div>
+                                               <div style="display: flex;justify-content:center;">
+                                                   <h1 style="font-size: 1.2rem;color: #c5c5c5;">No results</h1>
+                                               </div>
+                                           </div>
+                                </div>
+
+
+
                             </div>
                             <div class="leave-requests" style="margin-bottom:0px;">
 <!--                                <div class="title">Leave Requests</div>-->
@@ -267,31 +280,7 @@
 <!--                                    <div style="position: absolute;left: 0;bottom: -2px;height: 3px;width: 27px;border-radius: 8px;background-color: #4070f4;"></div>-->
                                 </div>
 
-                                    <LeaveRequestTable/>
-
-<!--                                <div class="leave-request-data">-->
-<!--                                    <table class="leave-request-table" style="width:100%">-->
-<!--                                        <thead>-->
-<!--                                            <tr class="table100-head">-->
-<!--                                                <th>Type</th>-->
-<!--                                                <th>Start</th>-->
-<!--                                                <th>End</th>-->
-<!--                                                <th>Duration</th>-->
-<!--                                                <th>Status</th>-->
-<!--                                            </tr>-->
-<!--                                        </thead>-->
-<!--                                        <tbody>-->
-<!--                                            <tr t-foreach="state.leave_requests_data" t-as="leave_request"-->
-<!--                                                t-key="leave_request.id">-->
-<!--                                                <td><t t-esc="leave_request.holiday_status_id[1]"/></td>-->
-<!--                                                <td><t t-esc="leave_request.date_from"/></td>-->
-<!--                                                <td><t t-esc="leave_request.date_to"/></td>-->
-<!--                                                <td><t t-esc="leave_request.duration_display"/></td>-->
-<!--                                                <td><t t-esc="leave_request.state"/></td>-->
-<!--                                            </tr>-->
-<!--                                        </tbody>-->
-<!--                                    </table>-->
-<!--                                </div>-->
+                                <LeaveRequestTable/>
                             </div>
                         </div>
                         <div class="sales-boxes">
@@ -301,25 +290,6 @@
 <!--                                    <div style="position: absolute;left: 0;bottom: -2px;height: 3px;width: 27px;border-radius: 8px;background-color: #4070f4;"></div>-->
                                 </div>
                                 <AttendanceTable/>
-<!--                                <div class="leave-balance-data">-->
-<!--                                    <table class="attendance-data-table" style="width:100%">-->
-<!--                                        <thead>-->
-<!--                                            <tr class="table100-head">-->
-<!--                                                <th class="column1">Check In</th>-->
-<!--                                                <th class="column2">Check Out</th>-->
-<!--                                                <th class="column3">Worked Hours</th>-->
-<!--                                            </tr>-->
-<!--                                        </thead>-->
-<!--                                        <tbody>-->
-<!--                                            <tr t-foreach="state.attendances_data" t-as="attendance"-->
-<!--                                                t-key="attendance.id">-->
-<!--                                                <td><t t-esc="attendance.check_in"/></td>-->
-<!--                                                <td><t t-esc="attendance.check_out"/></td>-->
-<!--                                                <td><t t-esc="attendance.worked_hours"/></td>-->
-<!--                                            </tr>-->
-<!--                                        </tbody>-->
-<!--                                    </table>-->
-<!--                                </div>-->
                             </div>
                             <div class="leave-requests box">
 <!--                                <div class="title">Alerts</div>-->
@@ -340,7 +310,8 @@
 
     <t t-name="odoo_custom_portal.LeaveRequestTable" owl="1">
         <div style="position:relative;height: 100%;">
-            <div t-attf-style="background-color: #fff;border-radius: 10px;height: 100%;" class="downloads-tables">
+            <t  t-if="state.leave_requests_data.length>0">
+                <div t-attf-style="background-color: #fff;border-radius: 10px;height: 100%;" class="downloads-tables">
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -436,15 +407,28 @@
                     </div>
                 </div>
             </div>
-            <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;top:0;bottom:0;left:0;right:0;opacity:0.7;background-color:#fff">
-                        <div class="lds-dual-ring"></div>
+                 <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;top:0;bottom:0;left:0;right:0;opacity:0.7;background-color:#fff">
+                          <div class="lds-dual-ring"></div>
+                </div>
+            </t>
+            <div t-else=""  t-attf-style="background-color: #fff;border-radius: 10px;height: 100%;" class="downloads-tables">
+                  <div style="">
+                           <div style="display: flex;justify-content:center;margin: 15px 0px;">
+                               <i class="fa fa-search" style="font-size:50px;color: #c5c5c5;"></i>
+                           </div>
+                           <div style="display: flex;justify-content:center;">
+                               <h1 style="font-size: 1.2rem;color: #c5c5c5;">No results</h1>
+                           </div>
+                       </div>
             </div>
+
         </div>
 
     </t>
-<!--    height:{{loading.is_loading ? '200px': 'auto'}};-->
-<!--    display:{{loading.is_loading ? 'none':'block'}};-->
+
+
     <t t-name="odoo_custom_portal.AttendanceTable" owl="1">
+        <t t-if="state.attendances_data.length>0">
         <div style="" t-attf-style="position:relative;">
             <div t-attf-style="background-color: #fff;border-radius: 10px;" class="downloads-tables">
 
@@ -489,29 +473,10 @@
 <!--                                <span style="margin-right:3px;"><i class='fa fa-clock-o'></i></span>-->
                                 <span style="font-size: 2.1rem;font-weight: 700;margin-bottom: -0.8rem;" t-esc="timeResource(attendance.worked_hours)"/>
                                 <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">hours</p>
-<!--                                <div style="margin-left:4px;align-items: center;display: flex;">-->
-<!--                                    <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;">hours</p>-->
-<!--                                    <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;" > Available</p>-->
-<!--                                </div>-->
                             </div>
                         </div>
 
 
-
-
-<!--                        <div style="display:flex;justify-content:space-between;">-->
-<!--                            <div style="display:flex;">-->
-<!--                                <span style="font-size: 2.1rem;font-weight: 700;" t-esc="leave[1].remaining_leaves"/>-->
-<!--                                <div style="margin-left:4px;">-->
-<!--                                    <p style="color: black;font-weight: 400;font-size: 1rem;margin:0;" t-esc="leave[1].request_unit"/>-->
-<!--                                    <p style="color: black;font-weight: 400;font-size: 0.9rem;margin:0;" > Available</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div style="display:flex;align-items:flex-end;">-->
-<!--                                <p style="margin:0;font-weight: 600;"> <t t-esc="leave[1].leaves_taken"/> / <t  t-esc="leave[1].max_leaves"/> <t t-esc="leave[1].request_unit"/>s</p>-->
-<!--&lt;!&ndash;                                                   <p t-esc="leave[1].request_unit"/>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                        </div>-->
                     </div>
                     <div style="flex: 1 1 auto;width: 250px; margin: 0rem 0.3rem; padding: 0rem 1.5rem;"/>
                     <div style="flex: 1 1 auto;width: 250px; margin: 0rem 0.3rem; padding: 0rem 1.5rem;"/>
@@ -538,6 +503,21 @@
                         <div class="lds-dual-ring"></div>
             </div>
         </div>
+        </t>
+            <div t-else=""  t-attf-style="background-color: #fff;border-radius: 10px;height: 100%;" class="downloads-tables">
+                  <div style="">
+                           <div style="display: flex;justify-content:center;margin: 15px 0px;">
+                               <i class="fa fa-search" style="font-size:50px;color: #c5c5c5;"></i>
+                           </div>
+                           <div style="display: flex;justify-content:center;">
+                               <h1 style="font-size: 1.2rem;color: #c5c5c5;">No results</h1>
+                           </div>
+                       </div>
+            </div>
+
+        <t>
+
+        </t>
 
     </t>
 
@@ -589,6 +569,7 @@
              </div>
          </div>
          <div style="position:relative;height: 100%;">
+             <t t-if="state.warnings_data.length>0">
                     <div style="border-radius: 10px;background-color: #fff;" class="alert-container">
                             <div  class="" style="height: 100%;display: flex;flex-direction: column;justify-content: space-between;">
                                 <div class="alert-tab-container-inside">
@@ -636,6 +617,17 @@
                         <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;top:0;bottom:0;left:0;right:0;opacity:0.7;background-color:#fff">
                                 <div class="lds-dual-ring"></div>
                         </div>
+             </t>
+            <div t-else=""  t-attf-style="background-color: #fff;border-radius: 10px;height: 100%;" class="downloads-tables">
+                       <div style="">
+                           <div style="display: flex;justify-content:center;margin: 15px 0px;">
+                               <i class="fa fa-search" style="font-size:50px;color: #c5c5c5;"></i>
+                           </div>
+                           <div style="display: flex;justify-content:center;">
+                               <h1 style="font-size: 1.2rem;color: #c5c5c5;">No results</h1>
+                           </div>
+                       </div>
+            </div>
 
 
 

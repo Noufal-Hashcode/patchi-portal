@@ -109,7 +109,7 @@ class PortalHomePage(CustomerPortal):
                 'phone': employee.phone,
                 'children': employee.children,
                 'gender': employee.gender,
-                'marital': dict(employee._fields['marital'].selection)[employee.marital],
+                'marital': dict(employee._fields['marital'].selection)[employee.marital] if employee.marital else False,
                 'emergency_contact': employee.emergency_contact,
                 'emergency_phone': employee.emergency_phone,
                 'birthday': employee.birthday,
@@ -169,6 +169,7 @@ class PortalHomePage(CustomerPortal):
 
         employee_data = {}
         if len(employee) == 1:
+            print(employee.gender)
             employee_data = {
                 'id': employee.id,
                 'name': employee.name,
@@ -192,7 +193,7 @@ class PortalHomePage(CustomerPortal):
                 'phone': employee.phone,
                 'children': employee.children,
                 'gender': employee.gender,
-                'genders':  dict(employee._fields['gender'].selection),
+                'genders': dict(employee._fields['gender'].selection),
                 'marital': employee.marital,
                 'marital_statuses': dict(employee._fields['marital'].selection),
                 'emergency_contact': employee.emergency_contact,
@@ -241,18 +242,34 @@ class PortalHomePage(CustomerPortal):
                 }
                 employee.write(employee_data)
                 print(employee_data)
+            print(len(employee.address_home_id))
 
-            address_id = employee.address_home_id.write({
-                'email': saving_data['private_email'],
-                'phone': saving_data['phone'],
-                'street': saving_data['address_home_id']['street'],
-                'street2': saving_data['address_home_id']['street2'],
-                'city': saving_data['address_home_id']['city'],
-                'state_id': saving_data['address_home_id']['state_id'],
-                'country_id': saving_data['address_home_id']['country_id'],
-                'zip': saving_data['address_home_id']['zip'],
+            if  len(employee.address_home_id) == 0:
 
-            })
+                employee.address_home_id = employee.address_home_id.create({
+                    'name':request.env.user.employee_id.name,
+                    'email': saving_data['private_email'],
+                    'phone': saving_data['phone'],
+                    'street': saving_data['address_home_id']['street'],
+                    'street2': saving_data['address_home_id']['street2'],
+                    'city': saving_data['address_home_id']['city'],
+                    'state_id': saving_data['address_home_id']['state_id'],
+                    'country_id': saving_data['address_home_id']['country_id'],
+                    'zip': saving_data['address_home_id']['zip'],
+
+                }).id
+            elif len(employee.address_home_id) == 1:
+                address_id = employee.address_home_id.write({
+                    'email': saving_data['private_email'],
+                    'phone': saving_data['phone'],
+                    'street': saving_data['address_home_id']['street'],
+                    'street2': saving_data['address_home_id']['street2'],
+                    'city': saving_data['address_home_id']['city'],
+                    'state_id': saving_data['address_home_id']['state_id'],
+                    'country_id': saving_data['address_home_id']['country_id'],
+                    'zip': saving_data['address_home_id']['zip'],
+
+                })
 
         return True
 
@@ -262,8 +279,8 @@ class PortalHomePage(CustomerPortal):
         employee_id = request.env.user.employee_id.id
         employee = request.env['hr.employee'].sudo().browse(employee_id)
         # ('employee_id', '=', employee_id)
-        payslips_count = request.env['hr.payslip'].sudo().search_count([])
-        payslips = request.env['hr.payslip'].sudo().search([], limit=items_per_page,
+        payslips_count = request.env['hr.payslip'].sudo().search_count([('employee_id', '=', employee_id)])
+        payslips = request.env['hr.payslip'].sudo().search([('employee_id', '=', employee_id)], limit=items_per_page,
                                                            order='id DESC', offset=(page_number - 1) * items_per_page)
         payslips_data = []
         employee_data = {}
@@ -301,7 +318,7 @@ class PortalHomePage(CustomerPortal):
                                 employee.contract_id.name] if employee.contract_id.id else False,
                 'job_id': [employee.job_id.id,
                            employee.job_id.name] if employee.job_id.id else False,
-                'employee_type': dict(employee._fields['employee_type'].selection)[employee.employee_type],
+                'employee_type': dict(employee._fields['employee_type'].selection)[employee.employee_type] if employee.employee_type else False ,
                 'first_contract_date': employee.first_contract_date
 
             }
@@ -336,7 +353,7 @@ class PortalHomePage(CustomerPortal):
                 raise
         return pay_slips_sudo
 
-#error check access
+    # error check access
     @route(["/my/payslips/pdf/download"], type='http', auth="user", website=True)
     def get_payroll_report_print(self, list_ids='', **post):
         if not list_ids or re.search("[^0-9|,]", list_ids):
@@ -391,8 +408,8 @@ class PortalHomePage(CustomerPortal):
             domain.append(warning_type.id)
         print(tuple(domain))
 
-        warnings_count = request.env['hc.warning'].sudo().search_count([('type_id', 'in', tuple(domain))])
-        warnings = request.env['hc.warning'].sudo().search([('type_id', 'in', tuple(domain))],
+        warnings_count = request.env['hc.warning'].sudo().search_count([('type_id', 'in', tuple(domain)),('employee_id', '=', employee_id)])
+        warnings = request.env['hc.warning'].sudo().search([('type_id', 'in', tuple(domain)),('employee_id', '=', employee_id)],
                                                            limit=items_per_page,
                                                            order='id DESC', offset=(page_number - 1) * items_per_page)
         print(warnings_count)
@@ -412,7 +429,7 @@ class PortalHomePage(CustomerPortal):
                                   warning.department_id.name] if warning.department_id else False,
                 'type_id': [warning.type_id.id,
                             warning.type_id.name] if warning.type_id else False,
-                'type': dict(warning.type_id._fields['type'].selection)[warning.type_id.type],
+                'type': dict(warning.type_id._fields['type'].selection)[warning.type_id.type] if warning.type_id.type else False ,
                 'attachment_ids': [
                     {'id': attachment.id, 'local_url': attachment.local_url, 'display_name': attachment.display_name,
                      'website_url': attachment.website_url} for attachment in warning.attachment_ids]
@@ -434,8 +451,8 @@ class PortalHomePage(CustomerPortal):
             domain.append(warning_type.id)
         print(tuple(domain))
 
-        circulars_count = request.env['hc.warning'].sudo().search_count([('type_id', 'in', tuple(domain))])
-        circulars = request.env['hc.warning'].sudo().search([('type_id', 'in', tuple(domain))],
+        circulars_count = request.env['hc.warning'].sudo().search_count([('type_id', 'in', tuple(domain)),('employee_id', '=', employee_id)])
+        circulars = request.env['hc.warning'].sudo().search([('type_id', 'in', tuple(domain)),('employee_id', '=', employee_id)],
                                                             limit=items_per_page,
                                                             order='id DESC', offset=(page_number - 1) * items_per_page)
         circulars_data = []
@@ -452,7 +469,7 @@ class PortalHomePage(CustomerPortal):
                                       circular.department_id.name] if circular.department_id else False,
                     'type_id': [circular.type_id.id,
                                 circular.type_id.name] if circular.type_id else False,
-                    'type': dict(circular.type_id._fields['type'].selection)[circular.type_id.type],
+                    'type': dict(circular.type_id._fields['type'].selection)[circular.type_id.type] if circular.type_id.type else False,
                     'attachment_ids': [
                         {'id': attachment.id, 'local_url': attachment.local_url,
                          'display_name': attachment.display_name,
