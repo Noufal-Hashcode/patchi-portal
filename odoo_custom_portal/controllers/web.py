@@ -144,7 +144,7 @@ class PortalHomePage(CustomerPortal):
                 return {'background': '#ffd57f'}
 
         for leave_request in leave_requests:
-            print(dict(leave_request._fields['state'].selection)[leave_request.state])
+            # print(dict(leave_request._fields['state'].selection)[leave_request.state])
             leave_requests_data.append({
                 'id': leave_request.id,
                 'holiday_status_id': [leave_request.holiday_status_id.id,
@@ -244,10 +244,10 @@ class PortalHomePage(CustomerPortal):
                 print(employee_data)
             print(len(employee.address_home_id))
 
-            if  len(employee.address_home_id) == 0:
+            if len(employee.address_home_id) == 0:
 
                 employee.address_home_id = employee.address_home_id.create({
-                    'name':request.env.user.employee_id.name,
+                    'name': request.env.user.employee_id.name,
                     'email': saving_data['private_email'],
                     'phone': saving_data['phone'],
                     'street': saving_data['address_home_id']['street'],
@@ -318,7 +318,8 @@ class PortalHomePage(CustomerPortal):
                                 employee.contract_id.name] if employee.contract_id.id else False,
                 'job_id': [employee.job_id.id,
                            employee.job_id.name] if employee.job_id.id else False,
-                'employee_type': dict(employee._fields['employee_type'].selection)[employee.employee_type] if employee.employee_type else False ,
+                'employee_type': dict(employee._fields['employee_type'].selection)[
+                    employee.employee_type] if employee.employee_type else False,
                 'first_contract_date': employee.first_contract_date
 
             }
@@ -408,10 +409,12 @@ class PortalHomePage(CustomerPortal):
             domain.append(warning_type.id)
         print(tuple(domain))
 
-        warnings_count = request.env['hc.warning'].sudo().search_count([('type_id', 'in', tuple(domain)),('employee_id', '=', employee_id)])
-        warnings = request.env['hc.warning'].sudo().search([('type_id', 'in', tuple(domain)),('employee_id', '=', employee_id)],
-                                                           limit=items_per_page,
-                                                           order='id DESC', offset=(page_number - 1) * items_per_page)
+        warnings_count = request.env['hc.warning'].sudo().search_count(
+            [('type_id', 'in', tuple(domain)), ('employee_id', '=', employee_id)])
+        warnings = request.env['hc.warning'].sudo().search(
+            [('type_id', 'in', tuple(domain)), ('employee_id', '=', employee_id)],
+            limit=items_per_page,
+            order='id DESC', offset=(page_number - 1) * items_per_page)
         print(warnings_count)
         print(warnings)
         # '&', ('type', '=', 'warning'), ('type', '=', 'notice'),]
@@ -429,12 +432,17 @@ class PortalHomePage(CustomerPortal):
                                   warning.department_id.name] if warning.department_id else False,
                 'type_id': [warning.type_id.id,
                             warning.type_id.name] if warning.type_id else False,
-                'type': dict(warning.type_id._fields['type'].selection)[warning.type_id.type] if warning.type_id.type else False ,
+                'description': warning.type_id.description,
+                'message': warning.type_id.message,
+                'type': dict(warning.type_id._fields['type'].selection)[
+                    warning.type_id.type] if warning.type_id.type else False,
+                'warning_level_ids': [{'id': level.warning_level_id.id, 'name': level.warning_level_id.name,
+                                       'level': level.warning_level_id.level} for level in
+                                      warning.warning_level_ids],
                 'attachment_ids': [
                     {'id': attachment.id, 'local_url': attachment.local_url, 'display_name': attachment.display_name,
                      'website_url': attachment.website_url} for attachment in warning.attachment_ids]
             })
-            print(warning.attachment_ids)
 
         return [{'warnings_data': warnings_data, 'warnings_count': warnings_count, }]
 
@@ -451,10 +459,12 @@ class PortalHomePage(CustomerPortal):
             domain.append(warning_type.id)
         print(tuple(domain))
 
-        circulars_count = request.env['hc.warning'].sudo().search_count([('type_id', 'in', tuple(domain)),('employee_id', '=', employee_id)])
-        circulars = request.env['hc.warning'].sudo().search([('type_id', 'in', tuple(domain)),('employee_id', '=', employee_id)],
-                                                            limit=items_per_page,
-                                                            order='id DESC', offset=(page_number - 1) * items_per_page)
+        circulars_count = request.env['hc.warning'].sudo().search_count(
+            [('type_id', 'in', tuple(domain)), ('employee_id', '=', employee_id)])
+        circulars = request.env['hc.warning'].sudo().search(
+            [('type_id', 'in', tuple(domain)), ('employee_id', '=', employee_id)],
+            limit=items_per_page,
+            order='id DESC', offset=(page_number - 1) * items_per_page)
         circulars_data = []
 
         for circular in circulars:
@@ -469,13 +479,19 @@ class PortalHomePage(CustomerPortal):
                                       circular.department_id.name] if circular.department_id else False,
                     'type_id': [circular.type_id.id,
                                 circular.type_id.name] if circular.type_id else False,
-                    'type': dict(circular.type_id._fields['type'].selection)[circular.type_id.type] if circular.type_id.type else False,
+                    'description': circular.type_id.description,
+                    'message': circular.type_id.message,
+                    'type': dict(circular.type_id._fields['type'].selection)[
+                        circular.type_id.type] if circular.type_id.type else False,
+                    'warning_level_ids': [{'id': level.warning_level_id.id, 'name': level.warning_level_id.name,
+                                           'level': level.warning_level_id.level} for level in
+                                          circular.warning_level_ids],
                     'attachment_ids': [
                         {'id': attachment.id, 'local_url': attachment.local_url,
                          'display_name': attachment.display_name,
                          'website_url': attachment.website_url} for attachment in circular.attachment_ids]
                 })
-                print(circular.attachment_ids)
+
 
         return [{'circulars_data': circulars_data, 'circulars_count': circulars_count, }]
 

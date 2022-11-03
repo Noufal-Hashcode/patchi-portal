@@ -31,9 +31,6 @@ export class DashBoard extends Component {
         this.loading = useState({
             is_loading: true,
         })
-        this.barcode_line = useRef('shift_chart')
-        this.canvasRef = useRef("canvas");
-        this.containerRef = useRef("container");
         // useAssets({jsLibs: ["/odoo_custom_portal/static/src/lib/frappe-gantt/frappe-gantt.js",]});
 
         useEffect(
@@ -51,30 +48,7 @@ export class DashBoard extends Component {
             },
             () => []
         );
-        // useEffect(
-        //     () => {
-        //
-        //         let tasks = [
-        //             {
-        //                 id: 'Task 1',
-        //                 name: 'Buy hosting',
-        //                 start: '2022-01-22',
-        //                 end: '2022-01-23',
-        //                 progress: 100,
-        //             },
-        //              {
-        //                 id: 'Task 1',
-        //                 name: 'Buy hosting',
-        //                 start: '2022-01-25',
-        //                 end: '2022-01-26',
-        //                 progress: 100,
-        //             },
-        //         ]
-        //         let ganttChart = new Gantt(".gantt-selector", tasks, {});
-        //
-        //
-        //
-        //     });
+
     }
 
     getDataUpdateState = async (page_number, items_per_page) => {

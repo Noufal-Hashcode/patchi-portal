@@ -58,13 +58,21 @@
                                                 <td class="column-1" style="" >Type -</td>
                                                 <td><t t-esc="state.popup_active_data.type_id[1]"/></td>
                                             </tr>
+                                 <tr>
+                                        <td class="column-1" style="" >Description -</td>
+                                        <td><t t-if="state.popup_active_data.description" t-esc="state.popup_active_data.description"/><t t-else="">    - </t></td>
+                                 </tr>
+                                 <tr>
+                                        <td class="column-1" style="" >Message -</td>
+                                        <td><t t-if="state.popup_active_data.message" t-esc="state.popup_active_data.message"/><t t-else="">    - </t></td>
+                                 </tr>
                                             <tr>
                                                 <td class="column-1" style="">Department -</td>
                                                 <td><t t-esc="state.popup_active_data.department_id[1]"/></td>
                                             </tr>
                                             <tr>
                                                 <td class="column-1" style="">Warning Levels -</td>
-                                                <td><t t-esc="state.popup_active_data.employee_id[1]"/></td>
+                                                <td><div t-foreach="state.popup_active_data.warning_level_ids" t-as="level" t-key="level.id"  t-esc="level.name"/></td>
                                             </tr>
                                             <tr>
                                                 <td class="column-1" style="">Attachments -</td>

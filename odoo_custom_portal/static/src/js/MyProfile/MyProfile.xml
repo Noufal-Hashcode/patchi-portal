@@ -333,7 +333,8 @@
                                                     <h2 style="font-weight: 600;font-size:1.3rem;"><t t-esc="state.employee_data.name"/></h2>
                                                 </div>
                                                 <div>
-                                                    <h4 style="font-weight: 500;font-size:1rem;"><t t-esc="state.employee_data.job_title"/></h4>
+                                                    <h4 style="font-weight: 500;font-size:1rem;"><t t-if="state.employee_data.job_title" t-esc="state.employee_data.job_title"/>
+                                                <t t-else=""> -</t></h4>
                                                 </div>
                                             </div>
                                             <div class="profile-buttons-container" style="margin:18px 0px;">
