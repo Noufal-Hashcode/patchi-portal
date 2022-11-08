@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+
+
+	<t t-name="MainPortalCertificateRequest" t-inherit="odoo_custom_portal.MainPortal" t-inherit-mode="extension" owl="1">
+             <xpath expr="//ul[1]" position="replace">
+
+                 <ul class="nav-links" style="flex:1;overflow-x: hidden;overflow-y: auto;">
+
+                                     <li>
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItemRe('main_dashboard')" t-attf-style ="{{ main_menu.is_main_dashboard_visible ? 'border-left: 5px solid #aa9828;background-color: #2b2a26;' :''}};" >
+                            <i class="fa fa-home icon"/>
+                            <span class="links_name">Dashboard</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItemRe('my_profile')" t-attf-style ="{{ main_menu.is_my_profile_visible ? 'border-left: 5px solid #aa9828;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-user icon"/>
+                            <span class="links_name">My Profile</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div  class="nav-link-div" t-on-click="()=>onClickMainMenuItemRe('my_shifts') " t-attf-style ="{{ main_menu.is_my_shifts_visible ? 'border-left: 5px solid #aa9828;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-clock-o icon"/>
+                            <span class="links_name">My Shifts</span>
+                        </div>
+                    </li>
+<!--                    <li>-->
+<!--                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItem('requests') " t-attf-style ="{{ main_menu.is_requests_visible ? 'border-left: 5px solid #aa9828;background-color: #2b2a26;' :''}};">-->
+<!--                            <i class="fa fa-wpforms"/>-->
+<!--                            <span class="links_name">Requests</span>-->
+<!--                        </div>-->
+<!--                    </li>-->
+                    <li>
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItemRe('alerts') " t-attf-style ="{{ main_menu.is_alerts_visible ? 'border-left: 5px solid #aa9828;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-bell icon"/>
+                            <span class="links_name">Alerts</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItemRe('downloads') " t-attf-style ="{{ main_menu.is_downloads_visible ? 'border-left: 5px solid #aa9828;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-download icon"/>
+                            <span class="links_name">Downloads</span>
+                        </div>
+                    </li>
+                    <li >
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItemRe('newsletter') " t-attf-style ="{{ main_menu.is_newsletter_visible ? 'border-left: 5px solid #aa9828;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-newspaper-o icon"/>
+                            <span class="links_name">Newsletter</span>
+                        </div>
+                    </li>
+
+                 <li >
+                        <div class="nav-link-div" t-on-click="()=>onClickMainMenuItemRe('certificate_request') " t-attf-style ="{{ main_menu.is_certificate_request_visible ? 'border-left: 5px solid #f8ce46;background-color: #2b2a26;' :''}};">
+                            <i class="fa fa-newspaper-o icon"/>
+                            <span class="links_name">Certificate Request</span>
+                        </div>
+                    </li>
+                 </ul>
+
+             </xpath>
+
+       <xpath expr="//t[@t-elif='main_menu.is_downloads_visible']" position="after">
+
+                 <t t-elif="main_menu.is_certificate_request_visible">
+                    <CertificateRequests onClickMenu="onClickMenu" />
+                </t>
+
+             </xpath>
+
+    </t>
+
+
+
+</templates>

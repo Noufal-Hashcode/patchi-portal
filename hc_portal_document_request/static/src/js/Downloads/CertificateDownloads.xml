@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="odoo_custom_portal.DownloadsCertificateTable" owl="1">
+        <div style="position:relative">
+            <t t-if="state.certificate_data.length>0">
+            <div t-attf-style="background-color: #fff;border-radius: 10px;" class="downloads-tables">
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="padding: 12px 0px 12px 8px;"><input class="checkbox-input-1" type="checkbox" id="HideNoStock" name="HideNoStock" value="HideNoStock" t-on-change="selectAllItems"  t-att-checked="state.all_selected" />
+                                <div class="checkbox-box-1"></div>
+                            </th>
+                            <th>Reference</th>
+                            <th style="min-width:180px;" >Certificate Type</th>
+                            <th style="width:150px;min-width:150px;text-align:center;">Requested Date</th>
+                            <th style="width:150px;min-width:150px;text-align:center;">Destination</th>
+                            <th style="width:120px;min-width:120px;text-align:right;">Issued To</th>
+                            <th style="width:120px;min-width:120px;text-align:right;">Approved</th>
+                            <th style="width:120px;text-align:right;">State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="state.certificate_data" t-as="payslip"
+                            t-key="payslip.id">
+                            <td style="padding: 12px 0px 12px 8px;"><input class="checkbox-input-1" type="checkbox" id="HideNoStock" name="HideNoStock" value="HideNoStock" t-on-change="() =>selectIndividualItem(payslip.id)"  t-att-checked="payslip.is_selected" />
+                                <div class="checkbox-box-1"></div>
+                            </td>
+                            <td><t t-if="payslip.number" t-esc="payslip.number"/><t t-else="">    - </t></td>
+                            <td style="min-width:180px;"><t t-if="payslip.struct_id[1]" t-esc="payslip.struct_id[1]"/><t t-else="">    - </t></td>
+                            <td style="width:150px;min-width:150px;text-align:center;"><t t-if="payslip.requested_date" t-esc="payslip.requested_date"/><t t-else="">    - </t></td>
+                            <td style="width:150px;min-width:150px;text-align:center;"><t t-if="payslip.destination" t-esc="payslip.destination"/><t t-else="">    - </t></td>
+                            <td style="width:120px;min-width:120px;text-align:right;"><t t-if="payslip.issued_to" t-esc="payslip.issued_to"/><t t-else="">  - </t></td>
+                            <td style="width:120px;min-width:120px;text-align:right;"><t t-if="payslip.approved_date" t-esc="payslip.approved_date"/><t t-else="">  - </t></td>
+                            <td style="width:120px;text-align:right;"><span t-if="payslip.state" t-attf-style="padding: 4px 8px;border-radius: 14px;background-color:{{payslip.state_colors.background}};font-size: 11px;font-weight: 600;margin:0;color: black;white-space: nowrap" t-esc="payslip.state"/><span t-else="">    - </span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="padding: 10px; display:flex;justify-content:end;width:100%;">
+                    <div t-on-click="printReport" t-if="state.selected_items.length>0" style="border-radius: 4px;border: 1px solid #aa9828;display: flex;justify-content: center;align-items: center;padding: 6px 6px;margin-right: 15px;background-color: #aa9828;">
+                        <h2 style="margin: 0;font-size: 1.1rem;color: #fff;">Print</h2>
+                    </div>
+
+                    <div style="display:flex;justify-content:center;align-items:center;">
+                        <p style="margin:0;font-weight:700;margin-right: 15px;"><span t-esc="(state.items_per_page*(state.current_page-1))+1"/><span> - </span>
+
+<!--                            <t t-if="state.certificate_count < state.items_per_page*(state.current_page)">-->
+<!--                                <span t-esc="state.certificate_count"/>-->
+<!--                            </t>-->
+<!--                            <t t-else="">-->
+<!--                                <span t-esc="(state.items_per_page*(state.current_page))"/>-->
+<!--                            </t>-->
+                            <span t-esc="(state.items_per_page*(state.current_page))"/>
+
+
+                            <span style="margin:0px 10px;">/</span><span t-esc="state.certificate_count"/></p>
+                    </div>
+
+                    <div class="pagination-tabs">
+                        <div t-attf-style="opacity:{{(state.current_page > 1) ? 1 : 0.5}}" class="pagination-button" t-on-click="backButton">
+                            <span><i class='fa fa-chevron-left'></i></span>
+                        </div>
+                        <div t-attf-style="opacity:{{(state.certificate_count > state.items_per_page*state.current_page) ? 1: 0.5}};" class="pagination-button" t-on-click="nextButton">
+                            <span><i class='fa fa-chevron-right'></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;top:0;bottom:0;left:0;right:0;opacity:0.7;background-color:#fff">
+                        <div class="lds-dual-ring"></div>
+            </div>
+            </t>
+
+            <div t-else=""  t-attf-style="background-color: #fff;border-radius: 10px;height: 100%;" class="downloads-tables">
+                    <div style="">
+                        <div style="display: flex;justify-content:center;margin: 15px 0px;">
+                            <i class="fa fa-search" style="font-size:50px;color: #c5c5c5;"></i>
+                        </div>
+                        <div style="display: flex;justify-content:center;">
+                            <h1 style="font-size: 1.2rem;color: #c5c5c5;">No results</h1>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </t>
+
+</templates>

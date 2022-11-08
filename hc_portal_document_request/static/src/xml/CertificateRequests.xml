@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="hc_portal_document_request.CertificateRequests" owl="1">
+
+
+                <section class="home-section" style="font-family:'Montserrat'">
+                <nav>
+                    <div class="sidebar-button">
+                        <i class='fa fa-bars icon' t-on-click="props.onClickMenu"></i>
+                        <span class="dashboard">Certificate Requests</span>
+                    </div>
+                    <div class="profile-details">
+                        <img class="logo-navbar" src="/odoo_custom_portal/static/src/img/logo-large.jpg" alt=""/>
+                    </div>
+                </nav>
+
+                    <div t-attf-style="display:{{loading.is_loading ? 'flex':'none'}};position:absolute;justify-content:center;align-items:center;height:100vh;width:100%">
+                        <div class="lds-dual-ring"></div>
+                    </div>
+
+                    <div class="home-content">
+
+                        <div>
+                            <div class="downloads-tab-container">
+                                <div class="download-tab">
+                                    <h1 class="download-tab-name">Certificate Requests</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-content">
+                            <div class="main-content-wrapper">
+                                <div class="profile-container">
+                                    <t t-if="state.current_page == 1">
+                                        <header>
+                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                <div>Request</div>
+                                                <div style="display:flex;" t-if="state.edit_enable">
+                                                    <div style="margin-right:8px;" class="edit-button" t-on-click="discardChanges">
+                                                        <h2 style="margin:0;font-size:1.1rem;">Discard</h2>
+                                                    </div>
+                                                    <div class="edit-button" t-on-click="saveChanges">
+                                                        <h2 style="margin:0;font-size:1.1rem;">Save</h2>
+                                                    </div>
+                                                </div>
+                                                <t  t-else="">
+                                                    <div class="edit-button" t-on-click="editButton">
+                                                        <h2 style="margin:0;font-size:1.1rem;">Edit</h2>
+                                                    </div>
+
+<!--                                                    <div class="edit-button" t-on-click="()=> changeTab(1)">-->
+<!--                                                        <h2 style="margin:0;font-size:1.1rem;">Create</h2>-->
+<!--                                                    </div>-->
+
+                                                </t>
+
+                                            </div>
+                                        </header>
+                                        <div class="form-view">
+                                        <div class="form first" t-if="Object.keys(state.employee_data).length >0">
+
+                                            <div class="details personal">
+                                                <div class="fields">
+                                        <div class="input-field">
+                                            <label>Employee ID</label>
+                                            <input type="text"  t-attf-placeholder="{{state.edit_enable ? 'Employee ID' : '  -  '}}" t-attf-value="{{state.employee_data.id}}"  disabled="disabled" t-on-input="(e)=> onChangeField(e,'emp_id')"/>
+                                        </div>
+
+
+                                                    <div class="input-field">
+                                                        <label>Certificate Type</label>
+                                                        <select  t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-change="(value) => changeType(value)">
+                                                            <t t-if="Object.keys(state.employee_data).length == 0">
+                                                            <option disabled="disabled" ><t t-if="state.edit_enable">Select Certificate Type</t><t t-else="">  -  </t></option>
+                                                            </t>
+                                                            <t t-if="Object.keys(state.employee_data).length >0">
+                                                                <option><t t-if="state.edit_enable">Select Certificate Type</t><t t-else="">  -  </t></option>
+                                                                <option t-foreach="state.employee_data.countries_ids" t-as="country" t-key="country[0]" t-att-value="country[0]" >
+                                                                    <t t-esc="country[1]"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+
+
+
+                                                    <div class="input-field">
+                                            <label>Addressee</label>
+                                            <input type="text"  t-attf-placeholder="{{state.edit_enable ? 'Addressee' : '  -  '}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'address')"/>
+                                        </div>
+
+
+
+                                                     <div class="input-field">
+                                            <label>Travel Destination</label>
+                                            <input type="text"  t-attf-placeholder="{{state.edit_enable ? 'Travel Destination' : '  -  '}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'travel')"/>
+                                        </div>
+
+
+                                                     <div class="input-field">
+                                            <label>Issued To</label>
+                                            <input type="text"  t-attf-placeholder="{{state.edit_enable ? 'Issued To' : '  -  '}}" t-att-disabled="state.edit_enable ? '' : 'disabled'" t-on-input="(e)=> onChangeField(e,'issued_to')"/>
+                                        </div>
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                                        </div>
+                                        </div>
+                                    </t>
+
+                                    <t t-elif="state.current_page == 2">
+                                            <header>
+                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                <div>Request</div>
+<!--                                                <div style="display:flex;" t-if="state.edit_enable">-->
+<!--                                                    <div style="margin-right:8px;" class="edit-button" t-on-click="discardChanges">-->
+<!--                                                        <h2 style="margin:0;font-size:1.1rem;">Discard</h2>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="edit-button" t-on-click="saveChanges">-->
+<!--                                                        <h2 style="margin:0;font-size:1.1rem;">Save</h2>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                <t  t-else="">-->
+<!--                                                    <div class="edit-button" t-on-click="editButton">-->
+<!--                                                        <h2 style="margin:0;font-size:1.1rem;">Edit</h2>-->
+<!--                                                    </div>-->
+
+                                                    <div class="edit-button" t-on-click="()=> changeTab(1)">
+                                                        <h2 style="margin:0;font-size:1.1rem;">Create</h2>
+                                                    </div>
+
+<!--                                                </t>-->
+
+                                            </div>
+                                        </header>
+                                        <div class="form-view">
+                                            <h3>
+                                                <span>
+                                                    Request Created Sucessfuly!!...
+                                                </span>
+                                            </h3>
+                                        </div>
+                                    </t>
+
+
+                                </div>
+
+                            </div>
+                            <div style="padding:30px">
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+            </section>
+
+        </t>
+</templates>
